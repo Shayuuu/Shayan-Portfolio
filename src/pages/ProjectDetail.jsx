@@ -19,10 +19,10 @@ const allProjectsData = [
     ],
     technologies: ["AI", "AR", "Full Stack (React, Node.js)", "IoT", "Embedded Systems", "Machine Learning", "Computer Vision", "PostgreSQL", "AWS"],
     images: [
-      "/shayan-portfolio-full/public/projects/safe-city/image1.jpg", // Replace with your actual image paths
-      "/shayan-portfolio-full/public/projects/safe-city/image2.jpg",
-      "/shayan-portfolio-full/public/projects/safe-city/image3.jpg",
-      "/shayan-portfolio-full/public/projects/safe-city/image4.jpg",
+      "/image1.jpg", // Replace with your actual image paths
+      "/image2.jpg",
+      "/image3.jpg",
+      "/image4.jpg",
     ],
     // You can add more details like:
     // videoUrl: "path/to/project-video.mp4",

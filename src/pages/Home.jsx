@@ -108,7 +108,7 @@ export default function Home() {
       <div className="fixed inset-0 bg-black z-[9998] flex items-center justify-center">
         <motion.img
           // CORRECTED PATH: Public assets are accessed from the root /
-          src="/logo/s.svg.jpg" // Assuming s.svg.jpg is directly in public/logo/
+          src="/s.svg.jpg" // Assuming s.svg.jpg is directly in public/logo/
           alt="Shayan Shaikh Logo" // Changed alt text for clarity
           className="w-48 h-48"
           initial={{ opacity: 0, scale: 0.7 }}
@@ -122,9 +122,9 @@ export default function Home() {
   return (
     <div className="bg-white text-black dark:bg-black dark:text-white min-h-screen font-sans transition-colors duration-500 pt-20">
       {/* Audio Elements (Hidden but preloaded) */}
-      <audio ref={audioLoaderRef} src="/sound/loader.wav" preload="auto" /> {/* Sound for initial loading */}
+      <audio ref={audioLoaderRef} src="/loader.wav" preload="auto" /> {/* Sound for initial loading */}
       <audio ref={audioNameRef} src="/name-sound.mp3.wav" preload="auto" /> {/* Sound for name/logo fade-in */}
-      <audio ref={audioClickRef} src="/sound/click.wav" preload="auto" />   {/* Sound for button clicks */}
+      <audio ref={audioClickRef} src="/click.wav" preload="auto" />   {/* Sound for button clicks */}
       {/* Background Video for Home Page ONLY */}
      
 
