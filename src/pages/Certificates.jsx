@@ -9,21 +9,21 @@ const certificateData = [
     id: 1,
     title: "Resilence Techmaster 2.0",
     awardBody: "Anjuman-I-Islam",
-    image: "/shayan-portfolio-full/public/certificate/gold.jpg", // Replace with your image path
+    image: "/gold.jpg", // Replace with your image path
     description: "Clinched 1st Prize at Resilience TechMaster 2.0 — a celebration of innovation, teamwork, and unbreakable spirit!",
   },
   {
     id: 2,
     title: "IP Awareness/Training program",
     awardBody: "National IP Awarness Mission",
-    image: "/shayan-portfolio-full/public/certificate/NPM.jpg", // Replace with your image path
+    image: "/NPM.jpg", // Replace with your image path
     description: "Successfully conducted an IP Awareness/Training Program under NIPAM, fostering innovation through education on intellectual property rights.",
   },
   {
     id: 3,
     title: "The Complete Web Development",
     awardBody: "Udemy",
-    image: "/shayan-portfolio-full/public/certificate/udemy.jpg", // Replace with your image path
+    image: "/udemy.jpg", // Replace with your image path
     description: "Mastering HTML, CSS, JavaScript, Node.js, MongoDB, and more to build full‑stack web applications.",
     
   },
@@ -31,7 +31,7 @@ const certificateData = [
     id: 4,
     title: "ERR_404 Hackathon",
     awardBody: "Anjuman-I-Islam",
-    image: "/shayan-portfolio-full/public/certificate/404.jpg", // Replace with your image path
+    image: "/404.jpg", // Replace with your image path
     description: "Successfully participated in a 36-hour hackathon, pushing boundaries through nonstop innovation, collaboration, and problem-solving under pressure.",
     
   },
@@ -39,7 +39,7 @@ const certificateData = [
     id: 5,
     title: "Inovative Project",
     awardBody: "Creative Ideas And Inovation In Action",
-    image: "/shayan-portfolio-full/public/certificate/ciia.jpg", // Replace with your image path
+    image: "/ciia.jpg", // Replace with your image path
     description: "Showcased an innovative idea at CIIA 4, blending creativity with real-world impact.",
    
   },
@@ -47,7 +47,7 @@ const certificateData = [
     id: 6,
     title: "Web Development Internship",
     awardBody: "CodeAlpha",
-    image: "/shayan-portfolio-full/public/certificate/code.jpg", // Replace with your image path
+    image: "/code.jpg", // Replace with your image path
     description: " Gaining hands-on experience in building responsive and dynamic web applications.",
     
   },
@@ -55,21 +55,21 @@ const certificateData = [
     id: 7,
     title: "Letter Of Appoinment",
     awardBody: "Instituion Of Electronics And Telecommunication Engineering",
-    image: "/shayan-portfolio-full/public/certificate/LOP.jpg", // Replace with your image path
+    image: "/LOP.jpg", // Replace with your image path
     description: " Elected as Chairman of the IETE Student Forum to lead innovation, foster technical growth, and empower student engagement.",
   },
   {
     id: 8,
     title: "Project Display",
     awardBody: "Fr. Conceicao Rodrigues College Of Engineering Bandra",
-    image: "/shayan-portfolio-full/public/certificate/parkalp.png", // Replace with your image path
+    image: "/parkalp.png", // Replace with your image path
     description: "Learned about Agile principles and Scrum framework for project management.",
   },
   {
     id: 9,
     title: "Innovative Idea For Entrepreneurship",
     awardBody: "Entrepreneur Development Cell",
-    image: "/shayan-portfolio-full/public/certificate/edc.png", // Replace with your image path
+    image: "/edc.png", // Replace with your image path
     description: "Developed a startup-focused project, aimed at solving real-world problems through innovation and entrepreneurial thinking.", 
   },
   
