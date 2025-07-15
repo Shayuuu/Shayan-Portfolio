@@ -1,9 +1,11 @@
+
 {
   "name": "shayan-portfolio",
   "version": "1.0.0",
   "private": true,
   "scripts": {
     "dev": "vite",
+    "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "build": "vite build",
     "preview": "vite preview"
   },
