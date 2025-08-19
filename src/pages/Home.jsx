@@ -108,7 +108,7 @@ export default function Home() {
       <div className="fixed inset-0 bg-black z-[9998] flex items-center justify-center">
         <motion.img
           // CORRECTED PATH: Public assets are accessed from the root /
-          src="/s.svg.jpg" // Assuming s.svg.jpg is directly in public/logo/
+          src="/shayan-portfolio-full/public/logo/s.svg.jpg" // Assuming s.svg.jpg is directly in public/logo/
           alt="Shayan Shaikh Logo" // Changed alt text for clarity
           className="w-48 h-48"
           initial={{ opacity: 0, scale: 0.7 }}
@@ -122,9 +122,9 @@ export default function Home() {
   return (
     <div className="bg-white text-black dark:bg-black dark:text-white min-h-screen font-sans transition-colors duration-500 pt-20">
       {/* Audio Elements (Hidden but preloaded) */}
-      <audio ref={audioLoaderRef} src="/loader.wav" preload="auto" /> {/* Sound for initial loading */}
-      <audio ref={audioNameRef} src="/name-sound.mp3.wav" preload="auto" /> {/* Sound for name/logo fade-in */}
-      <audio ref={audioClickRef} src="/click.wav" preload="auto" />   {/* Sound for button clicks */}
+      <audio ref={audioLoaderRef} src="/shayan-portfolio-full/public/sounds/loader.wav" preload="auto" /> {/* Sound for initial loading */}
+      <audio ref={audioNameRef} src="/shayan-portfolio-full/public/sounds/name-sound.mp3.wav" preload="auto" /> {/* Sound for name/logo fade-in */}
+      <audio ref={audioClickRef} src="/shayan-portfolio-full/public/sounds/click.wav" preload="auto" />   {/* Sound for button clicks */}
       {/* Background Video for Home Page ONLY */}
      
 
@@ -145,6 +145,7 @@ export default function Home() {
 
           <ul className="hidden md:flex space-x-6 text-sm md:text-base font-medium">
             {/* Removed 'Home' link as name serves as home. Added handleButtonClick for clicks */}
+            <li><a href="/stories">Stories</a></li>
             <li><a href="#about" className="hover:text-gray-300 transition" onClick={handleButtonClick}>About</a></li>
             <li><a href="#projects" className="hover:text-gray-300 transition" onClick={handleButtonClick}>Projects</a></li>
             <li><Link to="/certificates" className="hover:text-gray-300 transition" onClick={handleButtonClick}>Certificates</Link></li>
@@ -168,17 +169,15 @@ export default function Home() {
 
         {isMenuOpen && (
           <div className="md:hidden px-4 pt-4 pb-6 bg-black border-t border-gray-700">
-            <ul className="space-y-4 text-sm font-medium">
-              {/* Added handleButtonClick for mobile menu links */}
-              <li><a href="#hero" className="block hover:text-gray-300 transition" onClick={handleButtonClick}>Home</a></li>
-              <li><a href="#about" className="block hover:text-gray-300 transition" onClick={handleButtonClick}>About</a></li>
-              <li><a href="#projects" className="block hover:text-gray-300 transition" onClick={handleButtonClick}>Projects</a></li>
-              <li><a href="#awards" className="block hover:text-gray-300 transition" onClick={handleButtonClick}>Experience</a></li>
-              <li><a href="#contact" className="block hover:text-gray-300 transition" onClick={handleButtonClick}>Contact</a></li>
-              <li>
-                
-              </li>
-            </ul>
+            <ul className="flex space-x-6 text-sm md:text-base font-medium">
+  <li><a href="#hero" className="hover:text-gray-300 transition">Home</a></li>
+  <li><a href="#about" className="hover:text-gray-300 transition">About</a></li>
+  <li><a href="#projects" className="hover:text-gray-300 transition">Projects</a></li>
+  <li><a href="#awards" className="hover:text-gray-300 transition">Experience</a></li>
+  <li><a href="#contact" className="hover:text-gray-300 transition">Contact</a></li>
+  <li><a href="/stories" className="hover:text-gray-300 transition">Stories</a></li> {/* ✅ Add this */}
+</ul>
+
           </div>
         )}
       </nav>
@@ -192,7 +191,7 @@ export default function Home() {
         playsInline
         className="absolute top-0 left-0 w-full h-full object-cover opacity-30"
       >
-        <source src="/background.mp4" type="video/mp4" />
+        <source src="/shayan-portfolio-full/public/background/background.mp4" type="video/mp4" />
         Your browser does not support the video tag.
       </video>
           <motion.div

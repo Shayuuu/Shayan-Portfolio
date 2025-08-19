@@ -4,6 +4,8 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Home from './pages/Home';
 import Certificates from './pages/Certificates';
 import ProjectDetail from './pages/ProjectDetail';
+import Stories from './pages/Stories';
+
 
 function App() {
   const pageLoadAudioRef = useRef(null);
@@ -67,6 +69,7 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/certificates" element={<Certificates />} />
             <Route path="/projects/:projectId" element={<ProjectDetail />} />
+            <Route path="/stories" element={<Stories />} />
             {/* Add other routes as needed */}
           </Routes>
         </div>

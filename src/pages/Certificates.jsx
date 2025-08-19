@@ -7,71 +7,89 @@ import { Link } from "react-router-dom";
 const certificateData = [
   {
     id: 1,
-    title: "Resilence Techmaster 2.0",
-    awardBody: "Anjuman-I-Islam",
-    image: "/gold.jpg", // Replace with your image path
+    title: "Machine learning & AI",
+    awardBody: "Google Cloud",
+    image: "/shayan-portfolio-full/public/certificate/vertex ai.png", // Replace with your image path
     description: "Clinched 1st Prize at Resilience TechMaster 2.0 — a celebration of innovation, teamwork, and unbreakable spirit!",
   },
   {
     id: 2,
-    title: "IP Awareness/Training program",
-    awardBody: "National IP Awarness Mission",
-    image: "/NPM.jpg", // Replace with your image path
-    description: "Successfully conducted an IP Awareness/Training Program under NIPAM, fostering innovation through education on intellectual property rights.",
+    title: "Machine learning & AI",
+    awardBody: "Google Cloud",
+    image: "/shayan-portfolio-full/public/certificate/google AI.png", // Replace with your image path
+    description: "Clinched 1st Prize at Resilience TechMaster 2.0 — a celebration of innovation, teamwork, and unbreakable spirit!",
   },
   {
     id: 3,
     title: "The Complete Web Development",
     awardBody: "Udemy",
-    image: "/udemy.jpg", // Replace with your image path
+    image: "/shayan-portfolio-full/public/certificate/udemy.jpg", // Replace with your image path
     description: "Mastering HTML, CSS, JavaScript, Node.js, MongoDB, and more to build full‑stack web applications.",
     
   },
   {
+    id: 8,
+    title: "Web Development Internship",
+    awardBody: "CodeAlpha",
+    image: "/shayan-portfolio-full/public/certificate/code.jpg", // Replace with your image path
+    description: " Gaining hands-on experience in building responsive and dynamic web applications.",
+    
+  },
+  
+  {
     id: 4,
+    title: "IP Awareness/Training program",
+    awardBody: "National IP Awarness Mission",
+    image: "/shayan-portfolio-full/public/certificate/NPM.jpg", // Replace with your image path
+    description: "Successfully conducted an IP Awareness/Training Program under NIPAM, fostering innovation through education on intellectual property rights.",
+  },
+  
+  {
+    id: 5,
+    title: "Resilence Techmaster 2.0",
+    awardBody: "Anjuman-I-Islam",
+    image: "/shayan-portfolio-full/public/certificate/gold.jpg", // Replace with your image path
+    description: "Clinched 1st Prize at Resilience TechMaster 2.0 — a celebration of innovation, teamwork, and unbreakable spirit!",
+  },
+  {
+    id: 6,
     title: "ERR_404 Hackathon",
     awardBody: "Anjuman-I-Islam",
-    image: "/404.jpg", // Replace with your image path
+    image: "/shayan-portfolio-full/public/certificate/404.jpg", // Replace with your image path
     description: "Successfully participated in a 36-hour hackathon, pushing boundaries through nonstop innovation, collaboration, and problem-solving under pressure.",
     
   },
   {
-    id: 5,
+    id: 7,
     title: "Inovative Project",
     awardBody: "Creative Ideas And Inovation In Action",
-    image: "/ciia.jpg", // Replace with your image path
+    image: "/shayan-portfolio-full/public/certificate/ciia.jpg", // Replace with your image path
     description: "Showcased an innovative idea at CIIA 4, blending creativity with real-world impact.",
    
   },
+  
   {
-    id: 6,
-    title: "Web Development Internship",
-    awardBody: "CodeAlpha",
-    image: "/code.jpg", // Replace with your image path
-    description: " Gaining hands-on experience in building responsive and dynamic web applications.",
-    
-  },
-  {
-    id: 7,
+    id: 9,
     title: "Letter Of Appoinment",
     awardBody: "Instituion Of Electronics And Telecommunication Engineering",
-    image: "/LOP.jpg", // Replace with your image path
+    image: "/shayan-portfolio-full/public/certificate/LOP.jpg", // Replace with your image path
     description: " Elected as Chairman of the IETE Student Forum to lead innovation, foster technical growth, and empower student engagement.",
   },
   {
-    id: 8,
+    id: 10,
     title: "Project Display",
     awardBody: "Fr. Conceicao Rodrigues College Of Engineering Bandra",
-    image: "/parkalp.png", // Replace with your image path
+    image: "/shayan-portfolio-full/public/certificate/parkalp.png", // Replace with your image path
     description: "Learned about Agile principles and Scrum framework for project management.",
   },
   {
-    id: 9,
+    id: 11,
     title: "Innovative Idea For Entrepreneurship",
     awardBody: "Entrepreneur Development Cell",
-    image: "/edc.png", // Replace with your image path
+    image: "/shayan-portfolio-full/public/certificate/edc.png", // Replace with your image path
     description: "Developed a startup-focused project, aimed at solving real-world problems through innovation and entrepreneurial thinking.", 
   },
+  
   
   // Add more certificate data here
 ];
