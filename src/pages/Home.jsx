@@ -1,92 +1,94 @@
+// src/pages/Home.jsx
 import React, { useEffect, useState, useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
-import Loader from "../components/ui/Loader"; // Ensure this path is correct
-import { Button } from "../components/ui/button"; // Ensure this path is correct
+import { Link } from "react-router-dom";
 import NProgress from "nprogress";
 import "nprogress/nprogress.css";
-import { Link } from "react-router-dom";
+import { Button } from "../components/ui/button";
+import { FaLinkedin, FaGithub, FaEnvelope } from "react-icons/fa";
+
+
 
 export default function Home() {
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  // Renamed for clarity: logoFadeAudioRef from previous discussion is now audioNameRef for "Shayan Shaikh" intro sound.
-  const audioNameRef = useRef(null); // Corresponds to the logo/name fade-in sound
   const [isLoading, setIsLoading] = useState(true);
   const [showIntro, setShowIntro] = useState(true);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const audioLoaderRef = useRef(null); // For the initial 'Loading...' screen sound
-  const audioClickRef = useRef(null); // For button click sounds
+  const [status, setStatus] = useState("");
+  const [showMessage, setShowMessage] = useState(false);
+
+  const audioLoaderRef = useRef(null);
+  const audioNameRef = useRef(null);
+  const audioClickRef = useRef(null);
+  const contactRef = useRef(null);
 
   const { scrollY } = useScroll();
-  const y1 = useTransform(scrollY, [0, 500], [0, 100]);
   const y2 = useTransform(scrollY, [0, 500], [0, 200]);
 
   useEffect(() => {
     document.title = "Shayan Shaikh | Creative Technologist & Web Developer";
 
-    // Play initial loading sound and manage intro/loading states
-    // This sequence controls the 'Loading...' text, then the 'S' logo, then the main content.
     setTimeout(() => {
-      setShowIntro(false); // Hide 'Loading...' text
-      NProgress.start(); // Start NProgress bar
+      setShowIntro(false);
+      NProgress.start();
+      if (audioLoaderRef.current) audioLoaderRef.current.play().catch(() => {});
 
-      // Play audio associated with the loader (e.g., a short transition sound)
-      if (audioLoaderRef.current) {
-        audioLoaderRef.current.play().catch(() => {
-          console.log("Loader audio autoplay blocked or failed.");
-        });
-      }
-
-      // After a delay, play the sound associated with the name appearing
       setTimeout(() => {
-        if (audioNameRef.current) {
-          audioNameRef.current.play().catch(() => {
-            console.log("Name/Logo audio autoplay blocked or failed.");
-          });
-        }
-      }, 1000); // 1 second after loader audio starts, name audio plays
+        if (audioNameRef.current) audioNameRef.current.play().catch(() => {});
+      }, 1000);
 
-      // After a longer delay, hide the loader and complete NProgress
       setTimeout(() => {
-        setIsLoading(false); // Hide the 'S' logo loader
-        NProgress.done(); // Complete NProgress bar
-      }, 3000); // 3 seconds total for loading animation + sounds
-    }, 2000); // 2 seconds delay before starting the loading sequence
+        setIsLoading(false);
+        NProgress.done();
+      }, 3000);
+    }, 2000);
   }, []);
 
-  // Handler for the logo (Shayan Shaikh name) animation completion in the navbar
-  // This will trigger the audioNameRef sound *again* when the nav logo animates,
-  // if you want the same sound as the initial intro animation.
-  // If you only want it once on initial load, remove this handler.
-  const handleLogoAnimationComplete = () => {
-    // If audioNameRef is meant for the initial 'S' logo fade-in,
-    // you might not want it to play every time the nav logo animates.
-    // If you want a *different* sound for the nav logo, use a separate ref and sound file.
-    // For now, I'll assume you want the same sound to signify the name appearing.
-    if (audioNameRef.current) {
-      audioNameRef.current.currentTime = 0; // Rewind to start
-      audioNameRef.current.play().catch(error => {
-        console.log("Navbar logo animation complete audio playback blocked or failed:", error);
-      });
-    }
-  };
-
-  // Handler for individual button clicks
   const handleButtonClick = () => {
     if (audioClickRef.current) {
-      audioClickRef.current.currentTime = 0; // Rewind to start
-      audioClickRef.current.play().catch(() => {
-        console.log("Button click audio playback blocked or failed.");
-      });
+      audioClickRef.current.currentTime = 0;
+      audioClickRef.current.play().catch(() => {});
     }
   };
 
   const toggleTheme = () => {
     document.documentElement.classList.toggle("dark");
-    // Optionally play click sound on theme toggle
     handleButtonClick();
   };
 
-  // Intro Screen: "Loading..." text
+  const scrollToContact = () => {
+    contactRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
+
+  const handleLogoAnimationComplete = () => {
+    if (audioNameRef.current) {
+      audioNameRef.current.currentTime = 0;
+      audioNameRef.current.play().catch(() => {});
+    }
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const data = new FormData(form);
+
+    const response = await fetch("https://formspree.io/f/myzdyrdj", {
+      method: "POST",
+      body: data,
+      headers: { Accept: "application/json" },
+    });
+
+    if (response.ok) {
+      setStatus("✅ Thanks for contacting me! I'll get back to you soon.");
+      form.reset();
+    } else {
+      setStatus("❌ Oops! Something went wrong. Try again later.");
+    }
+
+    setShowMessage(true);
+    setTimeout(() => setShowMessage(false), 5000);
+    handleButtonClick();
+  };
+
   if (showIntro) {
     return (
       <div className="fixed inset-0 bg-black z-[9999] flex items-center justify-center">
@@ -102,14 +104,12 @@ export default function Home() {
     );
   }
 
-  // Loader Screen: Superman-like 'S' logo
   if (isLoading) {
     return (
       <div className="fixed inset-0 bg-black z-[9998] flex items-center justify-center">
         <motion.img
-          // CORRECTED PATH: Public assets are accessed from the root /
-          src="/shayan-portfolio-full/public/logo/s.svg.jpg" // Assuming s.svg.jpg is directly in public/logo/
-          alt="Shayan Shaikh Logo" // Changed alt text for clarity
+          src="/shayan-portfolio-full/public/logo/s.svg.jpg"
+          alt="Shayan Shaikh Logo"
           className="w-48 h-48"
           initial={{ opacity: 0, scale: 0.7 }}
           animate={{ opacity: 1, scale: 1 }}
@@ -121,14 +121,12 @@ export default function Home() {
 
   return (
     <div className="bg-white text-black dark:bg-black dark:text-white min-h-screen font-sans transition-colors duration-500 pt-20">
-      {/* Audio Elements (Hidden but preloaded) */}
-      <audio ref={audioLoaderRef} src="/shayan-portfolio-full/public/sounds/loader.wav" preload="auto" /> {/* Sound for initial loading */}
-      <audio ref={audioNameRef} src="/shayan-portfolio-full/public/sounds/name-sound.mp3.wav" preload="auto" /> {/* Sound for name/logo fade-in */}
-      <audio ref={audioClickRef} src="/shayan-portfolio-full/public/sounds/click.wav" preload="auto" />   {/* Sound for button clicks */}
-      {/* Background Video for Home Page ONLY */}
-     
+      {/* Audio */}
+      <audio ref={audioLoaderRef} src="/shayan-portfolio-full/public/sounds/loader.wav" preload="auto" />
+      <audio ref={audioNameRef} src="/shayan-portfolio-full/public/sounds/name-sound.mp3.wav" preload="auto" />
+      <audio ref={audioClickRef} src="/shayan-portfolio-full/public/sounds/click.wav" preload="auto" />
 
-      {/* Navigation Bar */}
+      {/* Navbar */}
       <nav className="w-full fixed top-0 left-0 z-50 bg-black bg-opacity-80 backdrop-blur-lg shadow-md">
         <div className="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center text-white">
           <Link to="/" className="text-white no-underline">
@@ -136,167 +134,178 @@ export default function Home() {
               initial={{ opacity: 0, y: -50 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1.5 }}
-              onAnimationComplete={handleLogoAnimationComplete} // This will play audioNameRef sound
+              onAnimationComplete={handleLogoAnimationComplete}
               className="text-2xl md:text-4xl font-bold tracking-wide cursor-pointer"
             >
               Shayan Shaikh
             </motion.h1>
           </Link>
 
+          {/* Desktop Menu */}
           <ul className="hidden md:flex space-x-6 text-sm md:text-base font-medium">
-            {/* Removed 'Home' link as name serves as home. Added handleButtonClick for clicks */}
-            <li><a href="/stories">Stories</a></li>
-            <li><a href="#about" className="hover:text-gray-300 transition" onClick={handleButtonClick}>About</a></li>
-            <li><a href="#projects" className="hover:text-gray-300 transition" onClick={handleButtonClick}>Projects</a></li>
-            <li><Link to="/certificates" className="hover:text-gray-300 transition" onClick={handleButtonClick}>Certificates</Link></li>
-            <li><a href="#awards" className="hover:text-gray-300 transition" onClick={handleButtonClick}>Experience</a></li>
-            <li><a href="#contact" className="hover:text-gray-300 transition" onClick={handleButtonClick}>Contact</a></li>
+            <li><a href="#about" onClick={handleButtonClick}>About</a></li>
+            <li><a href="#projects" onClick={handleButtonClick}>Projects</a></li>
+            <li><Link to="/certificates" onClick={handleButtonClick}>Certificates</Link></li>
+            <li><a href="#awards" onClick={handleButtonClick}>Experience</a></li>
+            <li><a href="#contact" onClick={handleButtonClick}>Contact</a></li>
           </ul>
 
+          {/* Right Buttons + Social Icons */}
+          <div className="flex items-center space-x-4">
+            <button onClick={scrollToContact} className="px-6 py-3 bg-indigo-600 text-white font-semibold rounded-lg hover:bg-indigo-700 transition">
+              Hire Me
+            </button>
+            <div className="hidden md:flex items-center space-x-3 text-xl">
+              <motion.a href="https://www.linkedin.com/in/shayan-shaikh-816832221/" target="_blank" rel="noopener noreferrer"
+                whileHover={{ scale: 1.2, color: "#0A66C2" }} transition={{ type: "spring", stiffness: 300 }}>
+                <FaLinkedin />
+              </motion.a>
+              <motion.a href="https://github.com/Shayuuu" target="_blank" rel="noopener noreferrer"
+                whileHover={{ scale: 1.2, color: "#6e5494" }} transition={{ type: "spring", stiffness: 300 }}>
+                <FaGithub />
+              </motion.a>
+              <motion.a href="mailto:shayanshaikh2003.ss@gmail.com"
+                whileHover={{ scale: 1.2, color: "#EA4335" }} transition={{ type: "spring", stiffness: 300 }}>
+                <FaEnvelope />
+              </motion.a>
+            </div>
+          </div>
+
+          {/* Mobile Hamburger */}
           <button className="md:hidden flex flex-col space-y-1 ml-4" onClick={() => { setIsMenuOpen(!isMenuOpen); handleButtonClick(); }}>
             <span className="w-6 h-0.5 bg-white"></span>
             <span className="w-6 h-0.5 bg-white"></span>
             <span className="w-6 h-0.5 bg-white"></span>
           </button>
-
-          <button
-            onClick={toggleTheme} // Calls toggleTheme, which internally calls handleButtonClick
-            className="hidden md:inline ml-4 p-2 border rounded text-xs md:text-sm hover:bg-gray-700 transition-colors duration-300"
-          >
-            🌙 / ☀️
-          </button>
         </div>
 
+        {/* Mobile Menu */}
         {isMenuOpen && (
           <div className="md:hidden px-4 pt-4 pb-6 bg-black border-t border-gray-700">
-            <ul className="flex space-x-6 text-sm md:text-base font-medium">
-  <li><a href="#hero" className="hover:text-gray-300 transition">Home</a></li>
-  <li><a href="#about" className="hover:text-gray-300 transition">About</a></li>
-  <li><a href="#projects" className="hover:text-gray-300 transition">Projects</a></li>
-  <li><a href="#awards" className="hover:text-gray-300 transition">Experience</a></li>
-  <li><a href="#contact" className="hover:text-gray-300 transition">Contact</a></li>
-  <li><a href="/stories" className="hover:text-gray-300 transition">Stories</a></li> {/* ✅ Add this */}
-</ul>
-
+            <ul className="flex flex-col space-y-2 text-sm font-medium">
+              <li><a href="#hero" onClick={handleButtonClick}>Home</a></li>
+              <li><a href="#about" onClick={handleButtonClick}>About</a></li>
+              <li><a href="#projects" onClick={handleButtonClick}>Projects</a></li>
+              <li><a href="#awards" onClick={handleButtonClick}>Experience</a></li>
+              <li><a href="#contact" onClick={handleButtonClick}>Contact</a></li>
+              <li><Link to="/stories" onClick={handleButtonClick}>Stories</Link></li>
+              <li className="flex space-x-4 mt-2 text-xl">
+                <a href="https://www.linkedin.com/in/your-linkedin/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                <a href="https://github.com/your-github" target="_blank" rel="noopener noreferrer">GitHub</a>
+                <a href="mailto:your-email@gmail.com">Gmail</a>
+              </li>
+            </ul>
           </div>
         )}
       </nav>
 
-      {/* Hero Section - Removed duplicate video, as it's now handled in App.jsx globally */}
+      {/* Hero Section */}
       <section id="hero" className="h-screen w-full relative overflow-hidden pt-20">
-        <video // Attach the ref here
-        autoPlay
-        loop
-        muted
-        playsInline
-        className="absolute top-0 left-0 w-full h-full object-cover opacity-30"
-      >
-        <source src="/shayan-portfolio-full/public/background/background.mp4" type="video/mp4" />
-        Your browser does not support the video tag.
-      </video>
-          <motion.div
-            className="text-center px-4 flex items-center justify-center h-full" // This div is already nested, so its z-index is relative to its parent (the section)
-            style={{ y: y2 }}
-          >
+        <video autoPlay loop muted playsInline className="absolute top-0 left-0 w-full h-full object-cover opacity-30">
+          <source src="/shayan-portfolio-full/public/background/background.mp4" type="video/mp4" />
+        </video>
+        <motion.div className="relative z-10 text-center px-4 flex items-center justify-center h-full" style={{ y: y2 }}>
           <div>
-            <motion.h1
-              initial={{ opacity: 0, y: -50 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1 }}
-              className="text-5xl md:text-7xl font-bold"
-            >
+            <motion.h1 initial={{ opacity: 0, y: -50 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1 }} className="text-5xl md:text-7xl font-bold">
               Shayan Shaikh
             </motion.h1>
-            <motion.p
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1.2, delay: 0.3 }}
-              className="mt-4 text-lg md:text-xl max-w-xl mx-auto"
-            >
+            <motion.p initial={{ opacity: 0, y: 50 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 1.2, delay: 0.3 }} className="mt-4 text-lg md:text-xl max-w-xl mx-auto">
               Creative Technologist & Full-Stack Developer crafting immersive, intelligent digital experiences.
             </motion.p>
-            <motion.div
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              transition={{ duration: 1.2, delay: 0.6 }}
-              className="mt-8"
-            >
-              <Button
-                onClick={handleButtonClick}
-                variant="outline"
-                className="text-white border-white hover:bg-white hover:text-black"
-              >
-                View Portfolio
-              </Button>
-            </motion.div>
           </div>
         </motion.div>
       </section>
 
-      {/* About Me Section */}
+      {/* About Section */}
       <section id="about" className="py-20 px-6 md:px-20 bg-gradient-to-b from-black to-gray-900">
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ duration: 1 }}
-        >
+        <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} transition={{ duration: 1 }}>
           <h2 className="text-4xl font-bold mb-6">About Me</h2>
           <p className="text-gray-300 leading-relaxed max-w-3xl">
             I’m a passionate Web Developer and Creative Technologist, driven by a deep love for both design and code.
-            I specialize in crafting dynamic, user-friendly websites and digital experiences that are not only visually
-            appealing but also built with robust functionality. My journey in tech has been a perfect fusion of artistic
-            vision and technical skill, allowing me to create solutions that stand out in both design and performance.
+            I specialize in crafting dynamic, user-friendly websites and digital experiences that are visually appealing
+            and built with robust functionality.
           </p>
         </motion.div>
       </section>
 
-      {/* Projects Section */}
+     {/* Projects Section */}
       <section id="projects" className="py-20 px-6 md:px-20 bg-black">
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ duration: 1 }}
-        >
+        <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} transition={{ duration: 1 }}>
           <h2 className="text-4xl font-bold mb-12">Projects</h2>
           <div className="space-y-12">
-            {/* Cognizant Safe City Project */}
-            <Link to="/projects/cognizant-safe-city" className="block group" onClick={handleButtonClick}> {/* Added click handler */}
-              <div className="bg-gray-900 p-6 rounded-2xl shadow-lg border border-gray-800 transition-transform hover:scale-[1.02] hover:border-blue-500">
-                <h3 className="text-2xl font-semibold mb-2 group-hover:text-blue-400 transition-colors duration-300">Cognizant Safe City</h3>
-                <p className="text-gray-400 mb-2">
-                  AI-powered smart city solution integrating emergency-responsive traffic signals, real-time headcount tech for fire safety,
-                  and mobile apps for citizen feedback. Implemented ML models for ambulance siren detection, IoT sensors,
-                  and real-time building monitoring.
-                </p>
-                <p className="text-sm text-gray-500">Tools: AI, AR, Full Stack, IoT, Embedded Systems</p>
-              </div>
-            </Link>
 
-            {/* Research & IPR Management Platform Project */}
-            {/* If this also needs a click sound, you'd add onClick={handleButtonClick} */}
-            <div className="bg-gray-900 p-6 rounded-2xl shadow-lg border border-gray-800">
-              <h3 className="text-2xl font-semibold mb-2">Research & IPR Management Platform</h3>
+            {/* Cognizant Safe City */}
+            <div className="bg-gray-900 p-6 rounded-2xl shadow-lg border border-gray-800 transition-transform hover:scale-[1.02] hover:border-blue-500">
+              <h3 className="text-2xl font-semibold mb-2 group-hover:text-blue-400 transition-colors duration-300">Cognizant Safe City</h3>
+              <p className="text-gray-400 mb-2">
+                AI-powered smart city solution integrating emergency-responsive traffic signals, real-time headcount tech for fire safety,
+                and mobile apps for citizen feedback. Implemented ML models for ambulance siren detection, IoT sensors,
+                and real-time building monitoring.
+              </p>
+              <p className="text-sm text-gray-500 mb-4">Tools: AI, AR, Full Stack, IoT, Embedded Systems</p>
+              <Link
+                to="/projects/cognizant-safe-city"
+                className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition"
+                onClick={handleButtonClick}
+              >
+                Project Details
+              </Link>
+            </div>
+
+            {/* Research & IPR Management */}
+            <div className="bg-gray-900 p-6 rounded-2xl shadow-lg border border-gray-800 transition-transform hover:scale-[1.02] hover:border-green-500">
+              <h3 className="text-2xl font-semibold mb-2 group-hover:text-green-400 transition-colors duration-300">Research & IPR Management Platform</h3>
               <p className="text-gray-400 mb-2">
                 A centralized digital platform to streamline research activities, manage intellectual property rights, and support
-                entrepreneurial growth. Features include real-time data tracking, collaboration modules, and optimized
-                resource management.
+                entrepreneurial growth. Features include real-time data tracking, collaboration modules, and optimized resource management.
               </p>
-              <p className="text-sm text-gray-500">Tools: React, Node.js, PostgreSQL, Firebase, AWS S3, Auth0</p>
+              <p className="text-sm text-gray-500 mb-4">Tools: React, Node.js, PostgreSQL, Firebase, AWS S3, Auth0</p>
+              <Link
+                to="/projects/research-ipr-management"
+                className="px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition"
+                onClick={handleButtonClick}
+              >
+                Project Details
+              </Link>
             </div>
+
+            {/* Movie Website */}
+            <div className="bg-gray-900 p-6 rounded-2xl shadow-lg border border-gray-800 transition-transform hover:scale-[1.02] hover:border-purple-500">
+              <h3 className="text-2xl font-semibold mb-2 text-purple-400">Movie Website</h3>
+              <p className="text-gray-400 mb-2">
+                A dynamic movie platform built with React, fetching data from The Movie Database (TMDb) API. Features include
+                browsing popular movies, detailed movie pages, responsive design, and search functionality.
+              </p>
+              <p className="text-sm text-gray-500 mb-4">Tools: React, Tailwind CSS, Framer Motion, TMDb API</p>
+              <div className="flex space-x-4">
+                <Link
+                  to="/projects/movie-website"
+                  className="px-4 py-2 bg-gray-800 text-white rounded-lg hover:bg-gray-700 transition"
+                  onClick={handleButtonClick}
+                >
+                  Project Details
+                </Link>
+                <a
+                  href="https://8rcggg-5173.csb.app/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition"
+                  onClick={handleButtonClick}
+                >
+                  View Live
+                </a>
+              </div>
+            </div>
+
           </div>
         </motion.div>
       </section>
 
-      {/* Experience & Awards Section */}
+       {/* Awards Section */}
       <section id="awards" className="py-20 px-6 md:px-20 bg-gradient-to-b from-gray-900 to-black">
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ duration: 1 }}
-        >
+        <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} transition={{ duration: 1 }}>
           <h2 className="text-4xl font-bold mb-12">Experience & Awards</h2>
           <div className="space-y-10">
-            {/* Add onClick={handleButtonClick} to these divs if they are clickable/interactive and you want sound */}
             <div className="border-l-4 border-white pl-6">
               <h3 className="text-2xl font-semibold">Chairperson – IETE Student Chapter</h3>
               <p className="text-gray-400">Led the chapter, organized workshops, tech talks, and innovation-driven student events to boost engagement and industry interaction.</p>
@@ -321,39 +330,47 @@ export default function Home() {
         </motion.div>
       </section>
 
+
       {/* Contact Section */}
-      <section id="contact" className="py-20 px-6 md:px-20 bg-black">
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1 }}
-          className="max-w-3xl mx-auto text-center"
-        >
+      <section id="contact" ref={contactRef} className="py-20 px-6 md:px-20 bg-black">
+        <motion.div initial={{ opacity: 0, y: 50 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 1 }} className="max-w-3xl mx-auto text-center">
           <h2 className="text-4xl font-bold mb-8">Let's Connect</h2>
-          <form
-            className="space-y-6 text-left"
-            onSubmit={(e) => {
-              e.preventDefault();
-              alert("Message sent!");
-              handleButtonClick(); // Play sound on form submit button click
-            }}
-          >
+          <form className="space-y-6 text-left" onSubmit={handleSubmit}>
             <div>
               <label className="block text-sm mb-2">Name</label>
-              <input type="text" className="w-full p-3 rounded bg-gray-800 text-white border border-gray-700" required />
+              <input name="name" type="text" className="w-full p-3 rounded bg-gray-800 text-white border border-gray-700" required />
             </div>
             <div>
               <label className="block text-sm mb-2">Email</label>
-              <input type="email" className="w-full p-3 rounded bg-gray-800 text-white border border-gray-700" required />
+              <input name="email" type="email" className="w-full p-3 rounded bg-gray-800 text-white border border-gray-700" required />
             </div>
             <div>
               <label className="block text-sm mb-2">Message</label>
-              <textarea rows="4" className="w-full p-3 rounded bg-gray-800 text-white border border-gray-700" required></textarea>
+              <textarea name="message" rows="4" className="w-full p-3 rounded bg-gray-800 text-white border border-gray-700" required></textarea>
             </div>
-            <Button type="submit" className="mt-4 border-white text-white hover:bg-white hover:text-black">
-              Send Message
-            </Button>
+            <Button type="submit" className="mt-4 border-white text-white hover:bg-white hover:text-black">Send Message</Button>
           </form>
+          {status && (
+            <p className={`mt-4 text-center transition-opacity duration-700 ${showMessage ? "opacity-100" : "opacity-0"} text-green-400`}>
+              {status}
+            </p>
+          )}
+
+          {/* Social Icons Footer */}
+          <div className="mt-8 flex justify-center space-x-6 text-2xl">
+            <motion.a href="https://www.linkedin.com/in/shayan-shaikh-816832221/" target="_blank" rel="noopener noreferrer"
+              whileHover={{ scale: 1.2, color: "#0A66C2" }} transition={{ type: "spring", stiffness: 300 }}>
+              <FaLinkedin />
+            </motion.a>
+            <motion.a href="https://github.com/Shayuuu" target="_blank" rel="noopener noreferrer"
+              whileHover={{ scale: 1.2, color: "#6e5494" }} transition={{ type: "spring", stiffness: 300 }}>
+              <FaGithub />
+            </motion.a>
+            <motion.a href="mailto:shayanshaikh2003.ss@gmail.com"
+              whileHover={{ scale: 1.2, color: "#EA4335" }} transition={{ type: "spring", stiffness: 300 }}>
+              <FaEnvelope />
+            </motion.a>
+          </div>
         </motion.div>
       </section>
     </div>

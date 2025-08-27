@@ -39,10 +39,29 @@ const allProjectsData = [
     ],
     technologies: ["React", "Node.js", "PostgreSQL", "Firebase", "AWS S3", "Auth0"],
     images: [
-        "/projects/ipr-platform/image1.jpg",
-        "/projects/ipr-platform/image2.jpg",
+        "/shayan-portfolio-full/public/project/ipr 1.png", 
+      "/shayan-portfolio-full/public/project/ipr 3.png",
+      "/shayan-portfolio-full/public/project/ipr 4.png",
+      "/shayan-portfolio-full/public/project/ipr 5.png",
     ],
   },
+  {
+  id: "movie-website",
+  title: "Movie Website",
+  shortDescription: "A dynamic movie platform built with React, fetching data from The Movie Database (TMDb) API.",
+  fullDescription: [
+    "This Movie Website allows users to browse popular movies, search for specific titles, and view detailed information about each movie. It leverages TMDb API for live movie data and integrates responsive design for seamless access across devices.",
+    "Key features include movie listings, search functionality, detailed movie pages with trailers and ratings, and smooth animations for a modern UX. The platform is built to be fast, responsive, and easy to maintain."
+  ],
+  technologies: ["React", "Tailwind CSS", "Framer Motion", "TMDb API"],
+  images: [
+    "/shayan-portfolio-full/public/project/Movie 1.png", 
+      "/shayan-portfolio-full/public/project/Movie 2.png",
+      "/shayan-portfolio-full/public/project/Movie 3.png",
+      "/shayan-portfolio-full/public/project/Movie 4.png",
+  ],
+}
+
   // Add more project data as needed, ensuring a unique 'id' for each
 ];
 
