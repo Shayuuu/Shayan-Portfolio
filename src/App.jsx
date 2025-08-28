@@ -59,7 +59,7 @@ function App() {
           playsInline
           className="absolute inset-0 w-full h-full object-cover z-0"
         >
-          <source src="/shayan-portfolio-full/public/background.mp4" type="video/mp4" />
+          <source src="/background.mp4" type="video/mp4" />
           Your browser does not support the video tag.
         </video>
 

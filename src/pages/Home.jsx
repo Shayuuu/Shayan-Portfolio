@@ -108,13 +108,13 @@ export default function Home() {
     return (
       <div className="fixed inset-0 bg-black z-[9998] flex items-center justify-center">
         <motion.img
-          src="/shayan-portfolio-full/public/logo/s.svg.jpg"
-          alt="Shayan Shaikh Logo"
-          className="w-48 h-48"
-          initial={{ opacity: 0, scale: 0.7 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 1.5, ease: "easeInOut" }}
-        />
+  src="/logo/s.svg.jpg"   // ✅ fixed
+  alt="Shayan Shaikh Logo"
+  className="w-48 h-48"
+  initial={{ opacity: 0, scale: 0.7 }}
+  animate={{ opacity: 1, scale: 1 }}
+  transition={{ duration: 1.5, ease: "easeInOut" }}
+/>
       </div>
     );
   }
@@ -122,9 +122,9 @@ export default function Home() {
   return (
     <div className="bg-white text-black dark:bg-black dark:text-white min-h-screen font-sans transition-colors duration-500 pt-20">
       {/* Audio */}
-      <audio ref={audioLoaderRef} src="/shayan-portfolio-full/public/sounds/loader.wav" preload="auto" />
-      <audio ref={audioNameRef} src="/shayan-portfolio-full/public/sounds/name-sound.mp3.wav" preload="auto" />
-      <audio ref={audioClickRef} src="/shayan-portfolio-full/public/sounds/click.wav" preload="auto" />
+      <audio ref={audioLoaderRef} src="/sounds/loader.wav" preload="auto" />
+      <audio ref={audioNameRef} src="/sounds/name-sound.mp3.wav" preload="auto" />
+      <audio ref={audioClickRef} src="/sounds/click.wav" preload="auto" />
 
       {/* Navbar */}
       <nav className="w-full fixed top-0 left-0 z-50 bg-black bg-opacity-80 backdrop-blur-lg shadow-md">
@@ -202,7 +202,7 @@ export default function Home() {
       {/* Hero Section */}
       <section id="hero" className="h-screen w-full relative overflow-hidden pt-20">
         <video autoPlay loop muted playsInline className="absolute top-0 left-0 w-full h-full object-cover opacity-30">
-          <source src="/shayan-portfolio-full/public/background/background.mp4" type="video/mp4" />
+          <source src="/background/background.mp4" type="video/mp4" />
         </video>
         <motion.div className="relative z-10 text-center px-4 flex items-center justify-center h-full" style={{ y: y2 }}>
           <div>
