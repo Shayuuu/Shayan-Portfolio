@@ -108,13 +108,13 @@ export default function Home() {
     return (
       <div className="fixed inset-0 bg-black z-[9998] flex items-center justify-center">
         <motion.img
-  src="/logo/s.svg.jpg"   // ✅ fixed
-  alt="Shayan Shaikh Logo"
-  className="w-48 h-48"
-  initial={{ opacity: 0, scale: 0.7 }}
-  animate={{ opacity: 1, scale: 1 }}
-  transition={{ duration: 1.5, ease: "easeInOut" }}
-/>
+          src="/logo/s.svg.jpg"
+          alt="Shayan Shaikh Logo"
+          className="w-48 h-48"
+          initial={{ opacity: 0, scale: 0.7 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 1.5, ease: "easeInOut" }}
+        />
       </div>
     );
   }

@@ -6,83 +6,89 @@ import { Link } from "react-router-dom";
 // You can replace these with your actual certificate details
 const certificateData = [
   {
-  id: 1,
-  title: "Machine learning & AI",
-  awardBody: "Google Cloud",
-  image: "/certificate/vertex ai.png",  // ✅ no "public" or project folder name
-  description: "Clinched 1st Prize at Resilience TechMaster 2.0 — a celebration of innovation, teamwork, and unbreakable spirit!",
-},
-{
-  id: 2,
-  title: "Machine learning & AI",
-  awardBody: "Google Cloud",
-  image: "/certificate/google AI.png",  // ✅ corrected
-  description: "Clinched 1st Prize at Resilience TechMaster 2.0 — a celebration of innovation, teamwork, and unbreakable spirit!",
-},
-{
-  id: 3,
-  title: "The Complete Web Development",
-  awardBody: "Udemy",
-  image: "/certificate/udemy.jpg",  // ✅ corrected
-  description: "Mastering HTML, CSS, JavaScript, Node.js, MongoDB, and more to build full-stack web applications.",
-},
-{
-  id: 8,
-  title: "Web Development Internship",
-  awardBody: "CodeAlpha",
-  image: "/certificate/code.jpg",  // ✅ corrected
-  description: "Gaining hands-on experience in building responsive and dynamic web applications.",
-},
-{
-  id: 4,
-  title: "IP Awareness/Training program",
-  awardBody: "National IP Awareness Mission",
-  image: "/certificate/NPM.jpg",  // ✅ corrected
-  description: "Successfully conducted an IP Awareness/Training Program under NIPAM, fostering innovation through education on intellectual property rights.",
-},
-{
-  id: 5,
-  title: "Resilence Techmaster 2.0",
-  awardBody: "Anjuman-I-Islam",
-  image: "/certificate/gold.jpg",  // ✅ corrected
-  description: "Clinched 1st Prize at Resilience TechMaster 2.0 — a celebration of innovation, teamwork, and unbreakable spirit!",
-},
-{
-  id: 6,
-  title: "ERR_404 Hackathon",
-  awardBody: "Anjuman-I-Islam",
-  image: "/certificate/404.jpg",  // ✅ corrected
-  description: "Successfully participated in a 36-hour hackathon, pushing boundaries through nonstop innovation, collaboration, and problem-solving under pressure.",
-},
-{
-  id: 7,
-  title: "Inovative Project",
-  awardBody: "Creative Ideas And Inovation In Action",
-  image: "/certificate/ciia.jpg",  // ✅ corrected
-  description: "Showcased an innovative idea at CIIA 4, blending creativity with real-world impact.",
-},
-{
-  id: 9,
-  title: "Letter Of Appoinment",
-  awardBody: "Instituion Of Electronics And Telecommunication Engineering",
-  image: "/certificate/LOP.jpg",  // ✅ corrected
-  description: "Elected as Chairman of the IETE Student Forum to lead innovation, foster technical growth, and empower student engagement.",
-},
-{
-  id: 10,
-  title: "Project Display",
-  awardBody: "Fr. Conceicao Rodrigues College Of Engineering Bandra",
-  image: "/certificate/parkalp.png",  // ✅ corrected
-  description: "Learned about Agile principles and Scrum framework for project management.",
-},
-{
-  id: 11,
-  title: "Innovative Idea For Entrepreneurship",
-  awardBody: "Entrepreneur Development Cell",
-  image: "/certificate/edc.png",  // ✅ corrected
-  description: "Developed a startup-focused project, aimed at solving real-world problems through innovation and entrepreneurial thinking.",
-},
-
+    id: 1,
+    title: "Machine learning & AI",
+    awardBody: "Google Cloud",
+    image: "/certificate/vertex ai.png", // Replace with your image path
+    description: "Clinched 1st Prize at Resilience TechMaster 2.0 — a celebration of innovation, teamwork, and unbreakable spirit!",
+  },
+  {
+    id: 2,
+    title: "Machine learning & AI",
+    awardBody: "Google Cloud",
+    image: "/certificate/google AI.png", // Replace with your image path
+    description: "Clinched 1st Prize at Resilience TechMaster 2.0 — a celebration of innovation, teamwork, and unbreakable spirit!",
+  },
+  {
+    id: 3,
+    title: "The Complete Web Development",
+    awardBody: "Udemy",
+    image: "/certificate/udemy.jpg", // Replace with your image path
+    description: "Mastering HTML, CSS, JavaScript, Node.js, MongoDB, and more to build full‑stack web applications.",
+    
+  },
+  {
+    id: 8,
+    title: "Web Development Internship",
+    awardBody: "CodeAlpha",
+    image: "/certificate/code.jpg", // Replace with your image path
+    description: " Gaining hands-on experience in building responsive and dynamic web applications.",
+    
+  },
+  
+  {
+    id: 4,
+    title: "IP Awareness/Training program",
+    awardBody: "National IP Awarness Mission",
+    image: "/certificate/NPM.jpg", // Replace with your image path
+    description: "Successfully conducted an IP Awareness/Training Program under NIPAM, fostering innovation through education on intellectual property rights.",
+  },
+  
+  {
+    id: 5,
+    title: "Resilence Techmaster 2.0",
+    awardBody: "Anjuman-I-Islam",
+    image: "/certificate/gold.jpg", // Replace with your image path
+    description: "Clinched 1st Prize at Resilience TechMaster 2.0 — a celebration of innovation, teamwork, and unbreakable spirit!",
+  },
+  {
+    id: 6,
+    title: "ERR_404 Hackathon",
+    awardBody: "Anjuman-I-Islam",
+    image: "/certificate/404.jpg", // Replace with your image path
+    description: "Successfully participated in a 36-hour hackathon, pushing boundaries through nonstop innovation, collaboration, and problem-solving under pressure.",
+    
+  },
+  {
+    id: 7,
+    title: "Inovative Project",
+    awardBody: "Creative Ideas And Inovation In Action",
+    image: "/certificate/ciia.jpg", // Replace with your image path
+    description: "Showcased an innovative idea at CIIA 4, blending creativity with real-world impact.",
+   
+  },
+  
+  {
+    id: 9,
+    title: "Letter Of Appoinment",
+    awardBody: "Instituion Of Electronics And Telecommunication Engineering",
+    image: "/certificate/LOP.jpg", // Replace with your image path
+    description: " Elected as Chairman of the IETE Student Forum to lead innovation, foster technical growth, and empower student engagement.",
+  },
+  {
+    id: 10,
+    title: "Project Display",
+    awardBody: "Fr. Conceicao Rodrigues College Of Engineering Bandra",
+    image: "/certificate/parkalp.png", // Replace with your image path
+    description: "Learned about Agile principles and Scrum framework for project management.",
+  },
+  {
+    id: 11,
+    title: "Innovative Idea For Entrepreneurship",
+    awardBody: "Entrepreneur Development Cell",
+    image: "/certificate/edc.png", // Replace with your image path
+    description: "Developed a startup-focused project, aimed at solving real-world problems through innovation and entrepreneurial thinking.", 
+  },
   
   
   // Add more certificate data here
