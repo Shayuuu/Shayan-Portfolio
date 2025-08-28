@@ -190,9 +190,9 @@ export default function Home() {
               <li><a href="#contact" onClick={handleButtonClick}>Contact</a></li>
               <li><Link to="/stories" onClick={handleButtonClick}>Stories</Link></li>
               <li className="flex space-x-4 mt-2 text-xl">
-                <a href="https://www.linkedin.com/in/your-linkedin/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-                <a href="https://github.com/your-github" target="_blank" rel="noopener noreferrer">GitHub</a>
-                <a href="mailto:your-email@gmail.com">Gmail</a>
+                <a href="https://www.linkedin.com/in/shayan-shaikh-816832221" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                <a href="https://github.com/Shayuuu" target="_blank" rel="noopener noreferrer">GitHub</a>
+                <a href="mailto:shayanshaikh2003.ss@gmail.com">Gmail</a>
               </li>
             </ul>
           </div>
