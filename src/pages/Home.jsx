@@ -286,7 +286,7 @@ export default function Home() {
                   Project Details
                 </Link>
                 <a
-                  href="https://8rcggg-5173.csb.app/"
+                  href="https://movie-iota-beryl.vercel.app/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition"
