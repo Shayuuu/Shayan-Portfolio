@@ -74,6 +74,10 @@ export default function Home() {
     contactRef.current?.scrollIntoView({ behavior: "smooth" });
   };
 
+  const scrollToHero = () => {
+    document.querySelector("#hero")?.scrollIntoView({ behavior: "smooth" });
+  };
+
   const handleLogoAnimationComplete = () => {
     if (audioNameRef.current) {
       audioNameRef.current.currentTime = 0;
@@ -161,7 +165,15 @@ export default function Home() {
       {/* Navbar */}
       <nav className="w-full fixed top-0 left-0 z-50 bg-black bg-opacity-80 backdrop-blur-lg shadow-md">
         <div className="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center text-white">
-          <Link to="/" className="text-white no-underline">
+          <a
+            href="#hero"
+            className="text-white no-underline"
+            onClick={(e) => {
+              e.preventDefault();
+              scrollToHero();
+              handleButtonClick();
+            }}
+          >
             <motion.img
               src="/logo/ss-logo.png"
               alt="Shayan Shaikh Logo"
@@ -171,7 +183,7 @@ export default function Home() {
               onAnimationComplete={handleLogoAnimationComplete}
               className="h-10 w-auto md:h-12 cursor-pointer object-contain"
             />
-          </Link>
+          </a>
 
           {/* Desktop Menu */}
           <ul className="hidden md:flex space-x-6 text-sm md:text-base font-medium">
@@ -230,9 +242,10 @@ export default function Home() {
 
       {/* Hero Section */}
       <section id="hero" className="h-screen w-full relative overflow-hidden pt-20">
-        <video autoPlay loop muted playsInline className="absolute top-0 left-0 w-full h-full object-cover opacity-30" aria-label="Background video">
+        <video autoPlay loop muted playsInline className="absolute top-0 left-0 w-full h-full object-cover opacity-40" aria-label="Background video">
           <source src="/background/background.mp4" type="video/mp4" />
         </video>
+        <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/40 to-black/80 pointer-events-none" />
         <motion.div className="relative z-10 text-center px-4 flex items-center justify-center h-full" style={{ y: y2 }}>
           <div className="max-w-4xl mx-auto">
             <motion.h1 
@@ -244,13 +257,18 @@ export default function Home() {
             >
               Shayan Shaikh
             </motion.h1>
+            <div className="flex flex-wrap justify-center gap-2 mb-4">
+              <span className="px-3 py-1 rounded-full bg-blue-500/15 text-blue-200 text-sm font-semibold">Full-Stack · React · Node</span>
+              <span className="px-3 py-1 rounded-full bg-emerald-500/15 text-emerald-200 text-sm font-semibold">Performance & DX</span>
+              <span className="px-3 py-1 rounded-full bg-amber-500/15 text-amber-200 text-sm font-semibold">Available for Remote</span>
+            </div>
             <motion.p 
               initial={{ opacity: 0, y: 50 }} 
               animate={{ opacity: 1, y: 0 }} 
               transition={{ duration: 1.2, delay: 0.3 }} 
               className="mt-4 text-lg md:text-xl lg:text-2xl max-w-2xl mx-auto text-gray-200 mb-8"
             >
-              Full-Stack Developer Crafting Scalable Solutions
+              I ship fast, scalable products that improve conversions and reliability. Recently cut load time by 35% and boosted signups by 25%.
             </motion.p>
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -408,79 +426,109 @@ export default function Home() {
           className="max-w-6xl mx-auto"
         >
           <h2 className="text-4xl md:text-5xl font-bold mb-12 text-center" style={{ fontFamily: 'Poppins, sans-serif' }}>Projects</h2>
-          <div className="space-y-8 md:space-y-12">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
 
             {/* Cognizant Safe City */}
             <motion.div 
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
+              whileHover={{ scale: 1.02, rotate: -0.25 }}
               transition={{ duration: 0.6 }}
-              className="bg-gray-900 p-6 md:p-8 rounded-2xl shadow-lg border border-gray-800 transition-all hover:scale-[1.02] hover:border-blue-500 hover:shadow-xl"
+              className="relative overflow-hidden bg-gradient-to-br from-gray-900 via-gray-900 to-gray-800 p-6 md:p-7 rounded-2xl shadow-xl border border-gray-800"
             >
-              <h3 className="text-2xl md:text-3xl font-semibold mb-3 text-blue-400 transition-colors duration-300">Cognizant Safe City</h3>
-              <p className="text-gray-400 mb-4 text-base md:text-lg leading-relaxed">
-                AI-powered smart city solution integrating emergency-responsive traffic signals, real-time headcount tech for fire safety,
-                and mobile apps for citizen feedback. Implemented ML models for ambulance siren detection, IoT sensors,
-                and real-time building monitoring.
+              <div className="absolute inset-0 opacity-0 hover:opacity-100 transition-opacity duration-500 bg-gradient-to-br from-blue-500/10 via-transparent to-purple-500/10 pointer-events-none" />
+              <div className="flex items-center justify-between mb-3">
+                <span className="px-3 py-1 text-xs font-semibold rounded-full bg-blue-500/15 text-blue-200">Full-Stack / AI</span>
+                <span className="text-xs text-gray-400">Smart City</span>
+              </div>
+              <h3 className="text-2xl md:text-3xl font-semibold mb-2 text-blue-200">Cognizant Safe City</h3>
+              <p className="text-gray-300 mb-4 text-base leading-relaxed">
+                AI-powered smart city solution with emergency-responsive signals, real-time headcount, and citizen feedback apps; ML for siren detection and IoT monitoring.
               </p>
               <div className="mb-4 p-3 bg-blue-500/10 rounded-lg border border-blue-500/20">
-                <p className="text-sm text-blue-300 font-semibold">Impact: Reduced emergency response time by 35% • Improved public safety monitoring</p>
+                <p className="text-sm text-blue-200 font-semibold">Impact: -35% emergency response time · Better public safety monitoring</p>
               </div>
-              <p className="text-sm text-gray-500 mb-4">Tools: AI, AR, Full Stack, IoT, Embedded Systems, Machine Learning</p>
-              <Link
-                to="/projects/cognizant-safe-city"
-                className="inline-block px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition font-semibold"
-                onClick={handleButtonClick}
-              >
-                Project Details
-              </Link>
+              <div className="flex flex-wrap gap-2 mb-4">
+                {["AI", "IoT", "ML", "React", "Node", "Vision"].map((tag) => (
+                  <span key={tag} className="px-3 py-1 text-xs rounded-full bg-white/5 text-gray-200 border border-white/10">{tag}</span>
+                ))}
+              </div>
+              <div className="flex items-center gap-3 pt-2 border-t border-gray-800">
+                <Link
+                  to="/projects/cognizant-safe-city"
+                  className="px-5 py-2.5 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition font-semibold"
+                  onClick={handleButtonClick}
+                >
+                  Project Details
+                </Link>
+              </div>
             </motion.div>
 
             {/* Research & IPR Management */}
             <motion.div 
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.1 }}
-              className="bg-gray-900 p-6 md:p-8 rounded-2xl shadow-lg border border-gray-800 transition-all hover:scale-[1.02] hover:border-green-500 hover:shadow-xl"
+              whileHover={{ scale: 1.02, rotate: -0.25 }}
+              transition={{ duration: 0.6, delay: 0.05 }}
+              className="relative overflow-hidden bg-gradient-to-br from-gray-900 via-gray-900 to-gray-800 p-6 md:p-7 rounded-2xl shadow-xl border border-gray-800"
             >
-              <h3 className="text-2xl md:text-3xl font-semibold mb-3 text-green-400 transition-colors duration-300">Research & IPR Management Platform</h3>
-              <p className="text-gray-400 mb-4 text-base md:text-lg leading-relaxed">
-                A centralized digital platform to streamline research activities, manage intellectual property rights, and support
-                entrepreneurial growth. Features include real-time data tracking, collaboration modules, and optimized resource management.
+              <div className="absolute inset-0 opacity-0 hover:opacity-100 transition-opacity duration-500 bg-gradient-to-br from-green-500/10 via-transparent to-emerald-500/10 pointer-events-none" />
+              <div className="flex items-center justify-between mb-3">
+                <span className="px-3 py-1 text-xs font-semibold rounded-full bg-green-500/15 text-green-200">Platform</span>
+                <span className="text-xs text-gray-400">IPR & Research</span>
+              </div>
+              <h3 className="text-2xl md:text-3xl font-semibold mb-2 text-green-200">Research & IPR Management</h3>
+              <p className="text-gray-300 mb-4 text-base leading-relaxed">
+                Centralized platform for research tracking, IPR lifecycle, and collaboration; real-time data, resource planning, and secure storage.
               </p>
               <div className="mb-4 p-3 bg-green-500/10 rounded-lg border border-green-500/20">
-                <p className="text-sm text-green-300 font-semibold">Impact: Streamlined IPR management workflow • Enhanced collaboration efficiency</p>
+                <p className="text-sm text-green-200 font-semibold">Impact: Streamlined IPR workflow · Faster collaboration cycles</p>
               </div>
-              <p className="text-sm text-gray-500 mb-4">Tools: React, Node.js, PostgreSQL, Firebase, AWS S3, Auth0</p>
-              <Link
-                to="/projects/research-ipr-management"
-                className="inline-block px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition font-semibold"
-                onClick={handleButtonClick}
-              >
-                Project Details
-              </Link>
+              <div className="flex flex-wrap gap-2 mb-4">
+                {["React", "Node", "PostgreSQL", "Firebase", "AWS S3", "Auth0"].map((tag) => (
+                  <span key={tag} className="px-3 py-1 text-xs rounded-full bg-white/5 text-gray-200 border border-white/10">{tag}</span>
+                ))}
+              </div>
+              <div className="flex items-center gap-3 pt-2 border-t border-gray-800">
+                <Link
+                  to="/projects/research-ipr-management"
+                  className="px-5 py-2.5 bg-green-600 text-white rounded-lg hover:bg-green-700 transition font-semibold"
+                  onClick={handleButtonClick}
+                >
+                  Project Details
+                </Link>
+              </div>
             </motion.div>
 
             {/* Movie Website */}
             <motion.div 
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              className="bg-gray-900 p-6 md:p-8 rounded-2xl shadow-lg border border-gray-800 transition-all hover:scale-[1.02] hover:border-purple-500 hover:shadow-xl"
+              whileHover={{ scale: 1.02, rotate: -0.25 }}
+              transition={{ duration: 0.6, delay: 0.1 }}
+              className="relative overflow-hidden bg-gradient-to-br from-gray-900 via-gray-900 to-gray-800 p-6 md:p-7 rounded-2xl shadow-xl border border-gray-800"
             >
-              <h3 className="text-2xl md:text-3xl font-semibold mb-3 text-purple-400">Movie Website</h3>
-              <p className="text-gray-400 mb-4 text-base md:text-lg leading-relaxed">
-                A dynamic movie platform built with React, fetching data from The Movie Database (TMDb) API. Features include
-                browsing popular movies, detailed movie pages, responsive design, and search functionality.
+              <div className="absolute inset-0 opacity-0 hover:opacity-100 transition-opacity duration-500 bg-gradient-to-br from-purple-500/10 via-transparent to-indigo-500/10 pointer-events-none" />
+              <div className="flex items-center justify-between mb-3">
+                <span className="px-3 py-1 text-xs font-semibold rounded-full bg-purple-500/15 text-purple-200">Frontend</span>
+                <span className="text-xs text-gray-400">Media</span>
+              </div>
+              <h3 className="text-2xl md:text-3xl font-semibold mb-2 text-purple-200">Movie Website</h3>
+              <p className="text-gray-300 mb-4 text-base leading-relaxed">
+                TMDb-powered movie explorer with responsive UI, smooth animations, and detailed pages for trailers and ratings.
               </p>
               <div className="mb-4 p-3 bg-purple-500/10 rounded-lg border border-purple-500/20">
-                <p className="text-sm text-purple-300 font-semibold">Impact: Modern UX with real-time API integration • Fully responsive design</p>
+                <p className="text-sm text-purple-200 font-semibold">Impact: Real-time API UX · Fully responsive experience</p>
               </div>
-              <p className="text-sm text-gray-500 mb-4">Tools: React, Tailwind CSS, Framer Motion, TMDb API</p>
-              <div className="flex flex-wrap gap-4">
+              <div className="flex flex-wrap gap-2 mb-4">
+                {["React", "Tailwind", "Framer Motion", "TMDb API"].map((tag) => (
+                  <span key={tag} className="px-3 py-1 text-xs rounded-full bg-white/5 text-gray-200 border border-white/10">{tag}</span>
+                ))}
+              </div>
+              <div className="flex items-center gap-3 pt-2 border-t border-gray-800">
                 <Link
                   to="/projects/movie-website"
-                  className="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition font-semibold"
+                  className="px-5 py-2.5 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition font-semibold"
                   onClick={handleButtonClick}
                 >
                   Project Details
@@ -489,7 +537,7 @@ export default function Home() {
                   href="https://movie-iota-beryl.vercel.app/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="px-6 py-3 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition font-semibold"
+                  className="px-5 py-2.5 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition font-semibold"
                   onClick={handleButtonClick}
                 >
                   View Live
@@ -501,21 +549,31 @@ export default function Home() {
             <motion.div 
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.3 }}
-              className="bg-gray-900 p-6 md:p-8 rounded-2xl shadow-lg border border-gray-800 transition-all hover:scale-[1.02] hover:border-orange-500 hover:shadow-xl"
+              whileHover={{ scale: 1.02, rotate: -0.25 }}
+              transition={{ duration: 0.6, delay: 0.15 }}
+              className="relative overflow-hidden bg-gradient-to-br from-gray-900 via-gray-900 to-gray-800 p-6 md:p-7 rounded-2xl shadow-xl border border-gray-800"
             >
-              <h3 className="text-2xl md:text-3xl font-semibold mb-3 text-orange-400 transition-colors duration-300">India CompuTech Corporate Website</h3>
-              <p className="text-gray-400 mb-4 text-base md:text-lg leading-relaxed">
-                A modern, conversion-optimized corporate website for IT infrastructure services with interactive features, Google Sheets integration, and scroll animations.
+              <div className="absolute inset-0 opacity-0 hover:opacity-100 transition-opacity duration-500 bg-gradient-to-br from-orange-500/10 via-transparent to-amber-500/10 pointer-events-none" />
+              <div className="flex items-center justify-between mb-3">
+                <span className="px-3 py-1 text-xs font-semibold rounded-full bg-orange-500/15 text-orange-200">Marketing Site</span>
+                <span className="text-xs text-gray-400">B2B Infra</span>
+              </div>
+              <h3 className="text-2xl md:text-3xl font-semibold mb-2 text-orange-200">India CompuTech Corporate Website</h3>
+              <p className="text-gray-300 mb-4 text-base leading-relaxed">
+                Conversion-optimized corporate site with interactive quiz, Google Sheets lead capture, scroll animations, and SEO/OG tuning.
               </p>
               <div className="mb-4 p-3 bg-orange-500/10 rounded-lg border border-orange-500/20">
-                <p className="text-sm text-orange-300 font-semibold">Impact: Enhanced lead capture with Google Sheets integration • Improved user engagement with animations</p>
+                <p className="text-sm text-orange-200 font-semibold">Impact: Higher lead capture · Engaging motion-first UX</p>
               </div>
-              <p className="text-sm text-gray-500 mb-4">Tools: HTML5, CSS3, JavaScript (ES6+), AOS.js, Google Sheets API, SEO Optimization</p>
-              <div className="flex flex-wrap gap-4">
+              <div className="flex flex-wrap gap-2 mb-4">
+                {["HTML5", "CSS3", "JS (ES6+)", "AOS", "Google Sheets", "SEO"].map((tag) => (
+                  <span key={tag} className="px-3 py-1 text-xs rounded-full bg-white/5 text-gray-200 border border-white/10">{tag}</span>
+                ))}
+              </div>
+              <div className="flex items-center gap-3 pt-2 border-t border-gray-800">
                 <Link
                   to="/projects/company-website"
-                  className="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition font-semibold"
+                  className="px-5 py-2.5 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition font-semibold"
                   onClick={handleButtonClick}
                 >
                   Project Details
@@ -524,7 +582,7 @@ export default function Home() {
                   href="https://www.indiacomputech.com/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="px-6 py-3 bg-orange-600 text-white rounded-lg hover:bg-orange-700 transition font-semibold"
+                  className="px-5 py-2.5 bg-orange-600 text-white rounded-lg hover:bg-orange-700 transition font-semibold"
                   onClick={handleButtonClick}
                 >
                   View Live
@@ -668,6 +726,34 @@ export default function Home() {
       </section>
 
 
+      {/* Hobbies */}
+      <section id="hobbies" className="py-12 md:py-16 px-6 md:px-20 bg-black">
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }} 
+          whileInView={{ opacity: 1, y: 0 }} 
+          transition={{ duration: 0.8 }}
+          className="max-w-5xl mx-auto rounded-2xl border border-gray-800 bg-gradient-to-r from-gray-900 via-gray-900 to-gray-800 p-6 md:p-8 shadow-lg"
+        >
+          <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+            <div>
+              <h3 className="text-2xl md:text-3xl font-semibold mb-2" style={{ fontFamily: 'Poppins, sans-serif' }}>Hobbies</h3>
+              <p className="text-gray-300 max-w-3xl">
+                Story writing helps me sharpen narrative thinking and empathy. Explore my ongoing thriller “The Hunt” on Wattpad.
+              </p>
+            </div>
+            <a
+              href="https://www.wattpad.com/story/345143266-the-hunt?utm_source=android&utm_medium=whatsapp&utm_content=share_writing&wp_page=create&wp_uname=shayyannz"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center px-5 py-3 rounded-lg bg-orange-600 text-white font-semibold hover:bg-orange-700 transition shadow-md"
+              onClick={handleButtonClick}
+            >
+              Read “The Hunt”
+            </a>
+          </div>
+        </motion.div>
+      </section>
+
       {/* Contact Section */}
       <section id="contact" ref={contactRef} className="py-16 md:py-20 px-6 md:px-20 bg-black">
         <motion.div 
@@ -676,7 +762,19 @@ export default function Home() {
           transition={{ duration: 1 }} 
           className="max-w-3xl mx-auto text-center"
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-8" style={{ fontFamily: 'Poppins, sans-serif' }}>Let's Connect</h2>
+          <h2 className="text-4xl md:text-5xl font-bold mb-4" style={{ fontFamily: 'Poppins, sans-serif' }}>Let's Connect</h2>
+          <p className="text-gray-300 max-w-2xl mx-auto mb-6">Tell me about the role and the outcome you need—I'll outline how I can ship it fast, reliably, and with clear communication.</p>
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-8 text-sm">
+            {[
+              "Ship fast with clean handoff and docs",
+              "Performance-first (LCP/CLS wins)",
+              "Transparent comms & async updates",
+            ].map((item) => (
+              <div key={item} className="flex items-center justify-center px-3 py-2 rounded-lg bg-white/5 border border-white/10 text-gray-200">
+                {item}
+              </div>
+            ))}
+          </div>
           <form className="space-y-6 text-left" onSubmit={handleSubmit}>
             <div>
               <label className="block text-sm mb-2">Name</label>
