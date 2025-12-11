@@ -140,7 +140,7 @@ export default function Home() {
     return (
       <div className="fixed inset-0 bg-black z-[9998] flex items-center justify-center">
         <motion.img
-          src="/logo/NaBAR-.png"
+          src="/logo/ss-logo.png"
           alt="Shayan Shaikh Logo"
           className="h-28 w-auto md:h-32 object-contain"
           initial={{ opacity: 0, scale: 0.7 }}
@@ -163,7 +163,7 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center text-white">
           <Link to="/" className="text-white no-underline">
             <motion.img
-              src="/logo/NaBAR-.png"
+              src="/logo/ss-logo.png"
               alt="Shayan Shaikh Logo"
               initial={{ opacity: 0, y: -50 }}
               animate={{ opacity: 1, y: 0 }}
