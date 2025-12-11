@@ -60,7 +60,34 @@ const allProjectsData = [
       "/project/Movie 3.png",
       "/project/Movie 4.png",
   ],
-}
+},
+{
+  id: "company-website",
+  title: "India CompuTech Corporate Website",
+  shortDescription: "A modern, conversion-optimized corporate website for IT infrastructure services with interactive features, Google Sheets integration, and scroll animations.",
+  fullDescription: [
+    "Developed a complete 4-page corporate website for India CompuTech, an IT infrastructure and cloud services company. The project features a responsive, mobile-first design with a red/white brand theme. Key highlights include an interactive 3-question service selector quiz with smart recommendations, Google Sheets form integration for lead capture, scroll-triggered animations using AOS.js, and comprehensive SEO optimization with Open Graph tags. The site includes 13 sections on the homepage (hero, testimonials, case studies, service bundles, timeline, statistics counter), a team showcase, detailed services page, and contact form with animated success/error modals. Built with vanilla HTML5, CSS3 (4,020 lines), and JavaScript (921 lines) for optimal performance. Features WhatsApp integration, live chat widget, trust badges, client testimonials, and animated statistics counters. Fully responsive across all devices with custom mobile navigation and optimized layouts.."
+  ],
+  technologies: ["HTML5",
+    "CSS3",
+    "JavaScript (ES6+)",
+    "AOS.js",
+    "Feather Icons",
+    "Google Apps Script",
+    "Google Sheets API",
+    "Google Fonts (Inter)",
+    "Responsive Design",
+    "WebP Images",
+    "SEO Optimization",
+    "Open Graph Tags"],
+
+  images: [
+    "/project/company 1.png", 
+      "/project/company 2.png",
+      "/project/company 3.png",
+      "/project/company 4.png",
+  ],
+},
 
   // Add more project data as needed, ensuring a unique 'id' for each
 ];
@@ -117,14 +144,14 @@ export default function ProjectDetail() {
       <nav className="w-full fixed top-0 left-0 z-50 bg-black bg-opacity-80 backdrop-blur-lg shadow-md">
         <div className="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center text-white">
           <Link to="/" className="text-white no-underline">
-            <motion.h1
+            <motion.img
+              src="/logo/NaBAR-.png"
+              alt="Shayan Shaikh Logo"
               initial={{ opacity: 0, y: -50 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1.5 }}
-              className="text-2xl md:text-4xl font-bold tracking-wide cursor-pointer"
-            >
-              Shayan Shaikh
-            </motion.h1>
+              className="h-10 w-auto md:h-12 cursor-pointer object-contain"
+            />
           </Link>
           <Link to="/#projects" className="text-sm md:text-base font-medium hover:text-gray-300 transition">
             ← Back to Projects
