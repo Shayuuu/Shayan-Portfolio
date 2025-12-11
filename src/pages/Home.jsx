@@ -383,7 +383,7 @@ export default function Home() {
                 </div>
                 <div className="flex items-center space-x-3">
                   <FaDocker className="text-blue-500 text-xl" />
-                  <span className="text-gray-300">Docker - Intermediate</span>
+                  <span className="text-gray-300">Docker - Mediater</span>
                 </div>
                 <div className="flex items-center space-x-3">
                   <SiFirebase className="text-yellow-400 text-xl" />
