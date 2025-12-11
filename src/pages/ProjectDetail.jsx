@@ -82,10 +82,10 @@ const allProjectsData = [
     "Open Graph Tags"],
 
   images: [
-    "/project/company 1.png", 
-      "/project/company 2.png",
-      "/project/company 3.png",
-      "/project/company 4.png",
+    "/project/company-1.png", 
+      "/project/company-2.png",
+      "/project/company-3.png",
+      "/project/company-4.png",
   ],
 },
 
@@ -145,7 +145,7 @@ export default function ProjectDetail() {
         <div className="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center text-white">
           <Link to="/" className="text-white no-underline">
             <motion.img
-              src="/logo/NaBAR-.png"
+              src="/logo/ss-logo.png"
               alt="Shayan Shaikh Logo"
               initial={{ opacity: 0, y: -50 }}
               animate={{ opacity: 1, y: 0 }}
