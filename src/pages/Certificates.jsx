@@ -119,18 +119,20 @@ export default function Certificates() {
       {/* Navigation (You might want to reuse your Nav component here if you have one) */}
       <nav className="w-full fixed top-0 left-0 z-50 bg-black bg-opacity-80 backdrop-blur-lg shadow-md">
         <div className="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center text-white">
-          <motion.h1
-            initial={{ opacity: 0, y: -50 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1.5 }}
-            className="text-2xl md:text-4xl font-bold tracking-wide"
-          >
-            Shayan Shaikh
-          </motion.h1>
+          <Link to="/" className="text-white no-underline">
+            <motion.img
+              src="/logo/NaBAR-.png"
+              alt="Shayan Shaikh Logo"
+              initial={{ opacity: 0, y: -50 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1.5 }}
+              className="h-10 w-auto md:h-12 cursor-pointer object-contain"
+            />
+          </Link>
           {/* Add your existing navigation links here or a back button */}
-          <a href="/" className="text-sm md:text-base font-medium hover:text-gray-300 transition">
+          <Link to="/" className="text-sm md:text-base font-medium hover:text-gray-300 transition">
             ← Back to Home
-          </a>
+          </Link>
         </div>
       </nav>
 
