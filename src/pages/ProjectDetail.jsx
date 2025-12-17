@@ -93,7 +93,7 @@ const allProjectsData = [
   title: "CineSnap - Premium Movie Booking Platform",
   shortDescription: "Full-stack movie ticket booking platform with real-time seat locking, payment integration, OTT recommendations, and cinema-grade UI/UX experience.",
   fullDescription: [
-    "CineSnap is a modern, full-stack movie ticket booking platform designed to provide a premium cinema experience with cutting-edge features and seamless user interactions. Built with Next.js 16 and TypeScript, the platform combines real-time functionality, secure payment processing, and intelligent movie recommendations into a unified ecosystem that revolutionizes how users discover and book movie tickets.",
+    "CineSnap is a modern, full-stack movie ticket booking platform designed to provide a premium cinema experience with cutting-edge features and seamless user interactions. Built with Next.js 16 and TypeScript, the platform combines real-time functionality, secure payment processing, and intelligent movie recommendations into a unified ecosystem that revolutionizes how users discover and book movie tickets.Built with modern web technologies including React 19, Next.js 16, PostgreSQL (Neon), NextAuth.js for authentication, Framer Motion for animations, and Tailwind CSS for responsive design. The application follows mobile-first principles with touch-optimized interfaces, ensuring excellent user experience across all devices. Performance optimizations include ISR caching, parallel API calls, batch database operations, and optimized image loading.",
   ],
   technologies: ["Next.js 16",
       "React 19",
