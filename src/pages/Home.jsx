@@ -401,7 +401,7 @@ export default function Home() {
                 </div>
                 <div className="flex items-center space-x-3">
                   <FaDocker className="text-blue-500 text-xl" />
-                  <span className="text-gray-300">Docker - Intermediate</span>
+                  <span className="text-gray-300">Docker - Mediater</span>
                 </div>
                 <div className="flex items-center space-x-3">
                   <SiFirebase className="text-yellow-400 text-xl" />
@@ -417,7 +417,7 @@ export default function Home() {
         </motion.div>
       </section>
 
-     {/* Projects Section */}
+      {/* Projects Section */}
       <section id="projects" className="py-16 md:py-20 px-6 md:px-20 bg-black">
         <motion.div 
           initial={{ opacity: 0 }} 
@@ -426,6 +426,63 @@ export default function Home() {
           className="max-w-6xl mx-auto"
         >
           <h2 className="text-4xl md:text-5xl font-bold mb-12 text-center" style={{ fontFamily: 'Poppins, sans-serif' }}>Projects</h2>
+
+          {/* Featured Project: India CompuTech Corporate Website */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            whileHover={{ scale: 1.02, rotate: -0.25 }}
+            transition={{ duration: 0.6 }}
+            className="relative overflow-hidden bg-gradient-to-br from-gray-900 via-gray-900 to-gray-800 p-6 md:p-8 rounded-2xl shadow-2xl border border-orange-500/40 mb-10"
+          >
+            <div className="absolute inset-0 opacity-0 hover:opacity-100 transition-opacity duration-500 bg-gradient-to-br from-orange-500/15 via-transparent to-amber-500/15 pointer-events-none" />
+            <div className="flex items-center justify-between mb-3">
+              <span className="px-3 py-1 text-xs font-semibold rounded-full bg-orange-500/15 text-orange-200">
+                Featured • Marketing Site
+              </span>
+              <span className="text-xs text-gray-400">B2B Infra</span>
+            </div>
+            <h3 className="text-2xl md:text-3xl lg:text-4xl font-semibold mb-3 text-cyan-200">
+              India CompuTech Corporate Website
+            </h3>
+            <p className="text-gray-300 mb-4 text-base md:text-lg leading-relaxed">
+              A conversion-optimized corporate site with interactive quiz, Google Sheets lead capture, motion-first sections, and SEO/OG tuning tailored for a B2B infrastructure brand.
+            </p>
+            <div className="mb-4 p-3 bg-orange-500/10 rounded-lg border border-orange-500/30">
+              <p className="text-sm text-orange-200 font-semibold">
+                Focus: Higher lead capture · Trust-building storytelling · Smooth scroll experience
+              </p>
+            </div>
+            <div className="flex flex-wrap gap-2 mb-4">
+              {["HTML5", "CSS3", "JS (ES6+)", "AOS Animations", "Google Sheets", "SEO"].map((tag) => (
+                <span
+                  key={tag}
+                  className="px-3 py-1 text-xs rounded-full bg-white/5 text-gray-200 border border-white/10"
+                >
+                  {tag}
+                </span>
+              ))}
+            </div>
+            <div className="flex flex-wrap items-center gap-3 pt-2 border-t border-gray-800">
+              <Link
+                to="/projects/company-website"
+                className="px-5 py-2.5 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition font-semibold"
+                onClick={handleButtonClick}
+              >
+                Project Details
+              </Link>
+              <a
+                href="https://www.indiacomputech.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-5 py-2.5 bg-orange-600 text-white rounded-lg hover:bg-orange-700 transition font-semibold"
+                onClick={handleButtonClick}
+              >
+                View Live
+              </a>
+            </div>
+          </motion.div>
+
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
 
             {/* Cognizant Safe City */}
@@ -545,7 +602,7 @@ export default function Home() {
               </div>
             </motion.div>
 
-            {/* India CompuTech Corporate Website */}
+            {/* Cinesnap - Premium Movie Booking */}
             <motion.div 
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -553,36 +610,36 @@ export default function Home() {
               transition={{ duration: 0.6, delay: 0.15 }}
               className="relative overflow-hidden bg-gradient-to-br from-gray-900 via-gray-900 to-gray-800 p-6 md:p-7 rounded-2xl shadow-xl border border-gray-800"
             >
-              <div className="absolute inset-0 opacity-0 hover:opacity-100 transition-opacity duration-500 bg-gradient-to-br from-orange-500/10 via-transparent to-amber-500/10 pointer-events-none" />
+              <div className="absolute inset-0 opacity-0 hover:opacity-100 transition-opacity duration-500 bg-gradient-to-br from-cyan-500/10 via-transparent to-pink-500/10 pointer-events-none" />
               <div className="flex items-center justify-between mb-3">
-                <span className="px-3 py-1 text-xs font-semibold rounded-full bg-orange-500/15 text-orange-200">Marketing Site</span>
-                <span className="text-xs text-gray-400">B2B Infra</span>
+                <span className="px-3 py-1 text-xs font-semibold rounded-full bg-cyan-500/15 text-cyan-200">Full-Stack / UX</span>
+                <span className="text-xs text-gray-400">Cinema Booking</span>
               </div>
-              <h3 className="text-2xl md:text-3xl font-semibold mb-2 text-orange-200">India CompuTech Corporate Website</h3>
+              <h3 className="text-2xl md:text-3xl font-semibold mb-2 text-cyan-200">Cinesnap</h3>
               <p className="text-gray-300 mb-4 text-base leading-relaxed">
-                Conversion-optimized corporate site with interactive quiz, Google Sheets lead capture, scroll animations, and SEO/OG tuning.
+                Premium movie ticket booking experience with cinematic UI, smooth seat selection and delightful micro-interactions.
               </p>
-              <div className="mb-4 p-3 bg-orange-500/10 rounded-lg border border-orange-500/20">
-                <p className="text-sm text-orange-200 font-semibold">Impact: Higher lead capture · Engaging motion-first UX</p>
+              <div className="mb-4 p-3 bg-cyan-500/10 rounded-lg border border-cyan-500/20">
+                <p className="text-sm text-cyan-200 font-semibold">Impact: Motion-first UX · Product feel · Showcases front-end craft</p>
               </div>
               <div className="flex flex-wrap gap-2 mb-4">
-                {["HTML5", "CSS3", "JS (ES6+)", "AOS", "Google Sheets", "SEO"].map((tag) => (
+                {["React", "Tailwind", "Framer Motion", "UX Engineering"].map((tag) => (
                   <span key={tag} className="px-3 py-1 text-xs rounded-full bg-white/5 text-gray-200 border border-white/10">{tag}</span>
                 ))}
               </div>
               <div className="flex items-center gap-3 pt-2 border-t border-gray-800">
                 <Link
-                  to="/projects/company-website"
+                  to="/projects/cinesnap"
                   className="px-5 py-2.5 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition font-semibold"
                   onClick={handleButtonClick}
                 >
                   Project Details
                 </Link>
                 <a
-                  href="https://www.indiacomputech.com/"
+                  href="https://cine-snap-ph.vercel.app/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="px-5 py-2.5 bg-orange-600 text-white rounded-lg hover:bg-orange-700 transition font-semibold"
+                  className="px-5 py-2.5 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition font-semibold"
                   onClick={handleButtonClick}
                 >
                   View Live
