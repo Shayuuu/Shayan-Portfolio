@@ -88,7 +88,34 @@ const allProjectsData = [
       "/project/company-4.png",
   ],
 },
+{
+  id: "cinesnap",
+  title: "CineSnap - Premium Movie Booking Platform",
+  shortDescription: "Full-stack movie ticket booking platform with real-time seat locking, payment integration, OTT recommendations, and cinema-grade UI/UX experience.",
+  fullDescription: [
+    "CineSnap is a modern, full-stack movie ticket booking platform designed to provide a premium cinema experience with cutting-edge features and seamless user interactions. Built with Next.js 16 and TypeScript, the platform combines real-time functionality, secure payment processing, and intelligent movie recommendations into a unified ecosystem that revolutionizes how users discover and book movie tickets.",
+  ],
+  technologies: ["Next.js 16",
+      "React 19",
+      "TypeScript",
+      "PostgreSQL (Neon)",
+      "Redis (Upstash)",
+      "NextAuth.js",
+      "Stripe",
+      "Razorpay",
+      "TMDb API",
+      "Framer Motion",
+      "Tailwind CSS",
+      "Node.js",
+      "Express.js"],
 
+  images: [
+    "/project/cinesnap1.png", 
+      "/project/cinesnap2.png",
+      "/project/cinesnap4.png",
+      "/project/cinesnap3.png",
+  ],
+},
   // Add more project data as needed, ensuring a unique 'id' for each
 ];
 
