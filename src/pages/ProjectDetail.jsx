@@ -24,6 +24,36 @@ const allProjectsData = [
       "/project/image3.jpg",
       "/project/image4.jpg",
     ],
+    caseStudy: {
+      impact: [
+        "Designed as a unified smart-city safety platform: surveillance + analytics + citizen reporting in one workflow",
+        "Strong real-world framing: emergency response, incident reporting, and proactive monitoring",
+      ],
+      role: [
+        "Built UI screens and flows for dashboards and reporting",
+        "Integrated secure APIs and contributed to performance optimization",
+        "Worked on AI module integration and feature polish for demo readiness",
+      ],
+      keyFeatures: [
+        "Facial recognition pipeline (OpenCV/Python) for identification from surveillance feeds",
+        "Crime heatmap / geo-mapping dashboard for data-driven monitoring and patrol insights",
+        "Citizen incident reporting portal with tracking for transparency",
+        "Panic alert flow for emergency situations with rapid escalation",
+      ],
+      architecture: [
+        "React frontend → Node/Express APIs → database layer for incident + user data",
+        "Computer vision/ML services integrated as AI modules powering detection/insights",
+        "Role-based access + secure API handling for sensitive workflows",
+      ],
+      challenges: [
+        "Balancing complex real-time dashboard UX with clarity (filters, states, and readable insights)",
+        "Integrating AI/vision outputs into a usable UI without overwhelming users",
+      ],
+      roadmap: [
+        "Add evaluation metrics for ML modules (precision/recall dashboards) and continuous improvement loop",
+        "Introduce audit logs for actions + incident lifecycle for enterprise readiness",
+      ],
+    },
     // You can add more details like:
     // videoUrl: "path/to/project-video.mp4",
     // githubLink: "https://github.com/your-repo/safe-city",
@@ -44,6 +74,34 @@ const allProjectsData = [
       "/project/ipr 4.png",
       "/project/ipr 5.png",
     ],
+    caseStudy: {
+      impact: [
+        "Centralized research + IPR workflows into one platform to reduce manual tracking and improve collaboration",
+        "Designed to support institutions with visibility into progress, resources, and IPR lifecycle status",
+      ],
+      role: [
+        "Worked on UI modules for tracking, collaboration, and lifecycle visibility",
+        "Integrated backend APIs and ensured data consistency for core flows",
+      ],
+      keyFeatures: [
+        "Research project tracking with real-time status visibility",
+        "IPR lifecycle management (idea → filing → review → commercialization)",
+        "Secure storage of documents and research artifacts (S3) and access control (Auth0)",
+        "Analytics-style views for progress/resource utilization",
+      ],
+      architecture: [
+        "React frontend → Node APIs → PostgreSQL as system of record",
+        "Firebase for real-time modules where needed; S3 for file storage; Auth0 for auth/roles",
+      ],
+      challenges: [
+        "Designing lifecycle states that are simple for users but accurate for real processes",
+        "Keeping UX fast while working with large lists + forms (filters, pagination patterns)",
+      ],
+      roadmap: [
+        "Add role-based dashboards (student/researcher/admin) with tailored KPIs",
+        "Introduce approval workflows + notifications (email/in-app) for lifecycle events",
+      ],
+    },
   },
   {
   id: "movie-website",
@@ -60,6 +118,34 @@ const allProjectsData = [
       "/project/Movie 3.png",
       "/project/Movie 4.png",
   ],
+  liveDemoLink: "https://movie-iota-beryl.vercel.app/",
+  caseStudy: {
+    impact: [
+      "Built a production-like movie discovery UX with fast browsing + search and clean detail pages",
+      "Demonstrates strong UI polish with motion and responsive layouts",
+    ],
+    role: [
+      "Implemented core UI screens: listings, search results, movie details",
+      "Integrated TMDb endpoints and handled loading/error states cleanly",
+    ],
+    keyFeatures: [
+      "Trending/popular listings + search",
+      "Movie detail page: ratings, overview, and trailer entry point",
+      "Responsive UI and animation polish (Framer Motion)",
+    ],
+    architecture: [
+      "React SPA → TMDb API via fetch → component-driven pages and reusable UI blocks",
+      "State patterns for query/search + pagination-style UX",
+    ],
+    challenges: [
+      "Keeping perceived performance high with images + API latency (skeletons, layout stability)",
+      "Designing a consistent card system for many screen sizes",
+    ],
+    roadmap: [
+      "Add watchlist (local storage / auth) and recommendations based on user taste",
+      "Improve SEO by migrating to SSR/Next.js version (optional for a v2)",
+    ],
+  },
 },
 {
   id: "company-website",
@@ -87,13 +173,47 @@ const allProjectsData = [
       "/project/company-3.png",
       "/project/company-4.png",
   ],
+  liveDemoLink: "https://www.indiacomputech.com/",
+  caseStudy: {
+    impact: [
+      "Conversion-first marketing site designed to increase lead capture and trust for a B2B infra brand",
+      "Showcases real-world UX patterns: quiz-based routing, trust badges, testimonials, and clear CTAs",
+    ],
+    role: [
+      "Built end-to-end multi-page site (layout, components, animations, responsive navigation)",
+      "Implemented lead capture with Google Sheets integration via Apps Script",
+      "Added SEO + Open Graph metadata and performance-minded vanilla implementation",
+    ],
+    keyFeatures: [
+      "Interactive 3-step services quiz with smart recommendations",
+      "Contact/lead forms wired to Google Sheets (no backend required)",
+      "AOS scroll-trigger animations + counters + modal success/error UX",
+      "WhatsApp integration + trust sections (testimonials, badges, case studies)",
+    ],
+    architecture: [
+      "Static multi-page site (HTML/CSS/JS) optimized for speed and reliability",
+      "Forms → Google Apps Script → Google Sheets as lightweight CRM",
+      "AOS for animations + careful responsive breakpoints for all devices",
+    ],
+    challenges: [
+      "Maintaining consistency across many sections while keeping the site fast and readable",
+      "Ensuring mobile nav + long pages remain smooth and user-friendly",
+    ],
+    roadmap: [
+      "Add lightweight CMS or JSON-driven content to reduce manual updates",
+      "Add analytics events (CTA clicks, quiz completion) to measure funnel performance",
+    ],
+  },
 },
 {
   id: "cinesnap",
   title: "CineSnap - Premium Movie Booking Platform",
   shortDescription: "Full-stack movie ticket booking platform with real-time seat locking, payment integration, OTT recommendations, and cinema-grade UI/UX experience.",
   fullDescription: [
-    "CineSnap is a modern, full-stack movie ticket booking platform designed to provide a premium cinema experience with cutting-edge features and seamless user interactions. Built with Next.js 16 and TypeScript, the platform combines real-time functionality, secure payment processing, and intelligent movie recommendations into a unified ecosystem that revolutionizes how users discover and book movie tickets.Built with modern web technologies including React 19, Next.js 16, PostgreSQL (Neon), NextAuth.js for authentication, Framer Motion for animations, and Tailwind CSS for responsive design. The application follows mobile-first principles with touch-optimized interfaces, ensuring excellent user experience across all devices. Performance optimizations include ISR caching, parallel API calls, batch database operations, and optimized image loading.",
+    "CineSnap is a premium, cinema-grade movie ticket booking platform built to feel like a modern consumer product—not a student CRUD app. It focuses on highly polished UI/UX, fast interactions, and a clear booking funnel (discover → choose show → pick seats → pay → ticket).",
+    "The core experience is built around a responsive seat-selection flow with strong micro-interactions and state clarity: hover states, selected-seat summaries, pricing clarity, and smooth transitions that reduce friction and improve conversion.",
+    "On the backend side, the platform is structured for real-world readiness: real-time seat availability (locking to prevent double-booking), secure authentication, and payment integrations. Movie discovery is powered by TMDb and layered with recommendation UX patterns users already trust from BookMyShow/OTT apps.",
+    "2026 roadmap (AI + Frontend): CineSnap evolves into an AI-assisted booking experience where users can type what they want (“2 seats near center tonight under ₹400”) and the UI auto-applies filters, suggests the best options, and explains why—while still keeping the final control in the user’s hands."
   ],
   technologies: ["Next.js 16",
       "React 19",
@@ -115,6 +235,52 @@ const allProjectsData = [
       "/project/cinesnap4.png",
       "/project/cinesnap3.png",
   ],
+  liveDemoLink: "https://cine-snap-ph.vercel.app/",
+  keyFeatures: [
+    "Real-time seat locking to prevent double-booking (locking window + expiry)",
+    "Pricing + seat type tiers (Regular / Premium / VIP) with clear UX feedback",
+    "Payment-ready checkout flow (Stripe/Razorpay) with success state + ticket delivery",
+    "Movie discovery via TMDb with trending, search, and detail pages",
+    "Recommendation surfaces (OTT-style carousels) to boost engagement"
+  ],
+  frontendHighlights: [
+    "Motion-first UI: page transitions, hover states, and micro-interactions that feel premium",
+    "State clarity: selected seats, price summary, and disabled states are always obvious",
+    "Mobile UX: tap-friendly seat grid, sticky summary, and fast flows (no confusion)",
+    "Performance mindset: image optimization + minimizing re-renders in heavy UI screens"
+  ],
+  architecture: [
+    "Client (Next.js) → API routes (booking/payments) → Postgres (Neon) for persistence",
+    "Redis (Upstash) used for seat lock keys + TTL-based lock expiry",
+    "Auth via NextAuth to protect booking history and user sessions",
+    "TMDb for movie metadata + posters + trailers"
+  ],
+  aiUpgradePlan: [
+    {
+      title: "AI Booking Assistant (UX)",
+      items: [
+        "Command palette (Cmd+K): user types intent → UI applies filters instantly",
+        "Inline suggestions: showtime + seat suggestions with a short 'why' explanation",
+        "Safe UX: AI suggests, user confirms (no surprise auto-pay actions)"
+      ]
+    },
+    {
+      title: "Intent Parsing + Seat Recommendation (API)",
+      items: [
+        "POST /api/ai/booking-intent → returns JSON: { movieQuery, date, timeRange, seats, budget, preferences }",
+        "POST /api/ai/seat-suggest → input: seatMap + intent → output: ranked seat groups + explanation",
+        "Cache results per showtime for speed; fall back to deterministic rules if AI fails"
+      ]
+    },
+    {
+      title: "Quality + Safety (What recruiters care about)",
+      items: [
+        "Store prompt/response logs (anonymized) + basic evaluation set (20–50 queries)",
+        "Guardrails: strict JSON schema, timeout + retries, and friendly error messaging",
+        "Cost control: smaller model for parsing + bigger model only when needed"
+      ]
+    }
+  ],
 },
   // Add more project data as needed, ensuring a unique 'id' for each
 ];
@@ -122,6 +288,11 @@ const allProjectsData = [
 export default function ProjectDetail() {
   const { projectId } = useParams(); // Get the dynamic part of the URL (e.g., 'cognizant-safe-city')
   const project = allProjectsData.find(p => p.id === projectId);
+
+  useEffect(() => {
+    // Ensure the detail page always opens at the top (React Router preserves scroll by default)
+    window.scrollTo({ top: 0, left: 0, behavior: "instant" });
+  }, [projectId]);
 
   useEffect(() => {
     if (project) {
@@ -249,6 +420,9 @@ export default function ProjectDetail() {
                   src={imageSrc}
                   alt={`${project.title} Image ${index + 1}`}
                   className="w-full h-auto object-cover transition-transform duration-300 group-hover:scale-105"
+                  onError={(e) => {
+                    e.currentTarget.src = "/certificate/404.jpg";
+                  }}
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
                     <p className="text-white text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-100">
@@ -274,6 +448,136 @@ export default function ProjectDetail() {
             </p>
           ))}
         </motion.div>
+
+        {/* Case Study Sections (AI + Frontend) */}
+        {(project.caseStudy || project.keyFeatures || project.frontendHighlights || project.architecture || project.aiUpgradePlan) && (
+          <motion.div
+            className="mt-12 space-y-10"
+            variants={fadeInVariants}
+            initial="hidden"
+            animate="visible"
+            transition={{ delay: 0.7 }}
+          >
+            {(project.caseStudy?.impact) && (
+              <div>
+                <h2 className="text-2xl font-semibold mb-4 border-b border-gray-700 pb-2">Impact</h2>
+                <ul className="space-y-2 text-gray-300">
+                  {project.caseStudy.impact.map((item, idx) => (
+                    <li key={idx} className="flex items-start">
+                      <span className="text-amber-400 mr-2">•</span>
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+
+            {(project.caseStudy?.role) && (
+              <div>
+                <h2 className="text-2xl font-semibold mb-4 border-b border-gray-700 pb-2">My Role</h2>
+                <ul className="space-y-2 text-gray-300">
+                  {project.caseStudy.role.map((item, idx) => (
+                    <li key={idx} className="flex items-start">
+                      <span className="text-blue-400 mr-2">•</span>
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+
+            {(project.caseStudy?.keyFeatures || project.keyFeatures) && (
+              <div>
+                <h2 className="text-2xl font-semibold mb-4 border-b border-gray-700 pb-2">Key Features</h2>
+                <ul className="space-y-2 text-gray-300">
+                  {(project.caseStudy?.keyFeatures || project.keyFeatures).map((item, idx) => (
+                    <li key={idx} className="flex items-start">
+                      <span className="text-blue-400 mr-2">•</span>
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+
+            {(project.caseStudy?.frontendHighlights || project.frontendHighlights) && (
+              <div>
+                <h2 className="text-2xl font-semibold mb-4 border-b border-gray-700 pb-2">Frontend UX Highlights</h2>
+                <ul className="space-y-2 text-gray-300">
+                  {(project.caseStudy?.frontendHighlights || project.frontendHighlights).map((item, idx) => (
+                    <li key={idx} className="flex items-start">
+                      <span className="text-purple-400 mr-2">•</span>
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+
+            {(project.caseStudy?.architecture || project.architecture) && (
+              <div>
+                <h2 className="text-2xl font-semibold mb-4 border-b border-gray-700 pb-2">Architecture (High Level)</h2>
+                <ul className="space-y-2 text-gray-300">
+                  {(project.caseStudy?.architecture || project.architecture).map((item, idx) => (
+                    <li key={idx} className="flex items-start">
+                      <span className="text-emerald-400 mr-2">•</span>
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+
+            {project.caseStudy?.challenges && (
+              <div>
+                <h2 className="text-2xl font-semibold mb-4 border-b border-gray-700 pb-2">Challenges & Solutions</h2>
+                <ul className="space-y-2 text-gray-300">
+                  {project.caseStudy.challenges.map((item, idx) => (
+                    <li key={idx} className="flex items-start">
+                      <span className="text-rose-400 mr-2">•</span>
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+
+            {project.caseStudy?.roadmap && (
+              <div>
+                <h2 className="text-2xl font-semibold mb-4 border-b border-gray-700 pb-2">Roadmap / Next Improvements</h2>
+                <ul className="space-y-2 text-gray-300">
+                  {project.caseStudy.roadmap.map((item, idx) => (
+                    <li key={idx} className="flex items-start">
+                      <span className="text-cyan-400 mr-2">•</span>
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+
+            {project.aiUpgradePlan && (
+              <div>
+                <h2 className="text-2xl font-semibold mb-4 border-b border-gray-700 pb-2">AI Upgrade Plan (2026)</h2>
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                  {project.aiUpgradePlan.map((section, idx) => (
+                    <div key={idx} className="bg-gray-900 border border-gray-800 rounded-xl p-5">
+                      <h3 className="text-lg font-semibold text-white mb-3">{section.title}</h3>
+                      <ul className="space-y-2 text-gray-300 text-sm">
+                        {section.items.map((it, j) => (
+                          <li key={j} className="flex items-start">
+                            <span className="text-cyan-400 mr-2">•</span>
+                            <span>{it}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+          </motion.div>
+        )}
 
         {/* Optional: Project Links (GitHub, Live Demo) */}
         {(project.githubLink || project.liveDemoLink) && (
