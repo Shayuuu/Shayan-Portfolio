@@ -168,10 +168,10 @@ const allProjectsData = [
     "Open Graph Tags"],
 
   images: [
-    "/project/company-1.png", 
-      "/project/company-2.png",
-      "/project/company-3.png",
-      "/project/company-4.png",
+    "/project/company 1.png", 
+      "/project/company 2.png",
+      "/project/company 3.png",
+      "/project/company 4.png",
   ],
   liveDemoLink: "https://www.indiacomputech.com/",
   caseStudy: {
